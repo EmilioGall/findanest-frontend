@@ -13,14 +13,18 @@ export default{
             <div class="title col-6 col-md-12 d-flex justify-content-start ">
                 <h1 >Trova ora l'alloggio dei tuoi sogni</h1>
             </div>
-            <div class="input col-12 d-flex justify-content-center align-items-center">
-                <input id="searchbar" type="text " placeholder="inserisci la zona">
-                <span>
-                    <button class="search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </span>
-            </div>       
+            <form action="">
+
+                <div class="input col-12 d-flex justify-content-center align-items-center">
+                    <input id="searchbar" type="text " placeholder="inserisci la zona">
+                    <span>
+                        <button class="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </span>
+                </div>       
+
+            </form>
 
         </div>
     </div>
