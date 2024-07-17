@@ -1,53 +1,42 @@
 <script>
-export default{
+export default {
     data() {
         return {
-            
+
         }
     },
 }
 </script>
 <template>
-    <div class="wrapper ">
-        <div class="container">
-            <div class="title col-6 col-md-12 d-flex justify-content-start ">
-                <h1 >Trova ora l'alloggio dei tuoi sogni</h1>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100-height" src="/src/real estate/home6.jpg" alt="image1">
             </div>
-            <form action="">
-
-                <div class="input col-12 d-flex justify-content-center align-items-center">
-                    <input id="searchbar" type="text " placeholder="inserisci la zona">
-                    <span>
-                        <button class="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
-                    </span>
-                </div>       
-
-            </form>
-
+            <div class="carousel-item">
+                <img class="d-block w-100-height" src="..." alt="image2">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100-height" src="..." alt="image3">
+            </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 </template>
-<style>
-.wrapper{
-    background-color: aliceblue;
-    height: 60vh;
-    padding-top: 10vh;
-}
-.input{
-    height: 20vh;
-    margin-top: 10vh;
-}
-#searchbar{
-    height: 30px;
-    width: 60%;
-    border-radius: 5px;
-    border: 0.5px solid rgb(220, 211, 211);
-}
-.search{
-    margin-left: -30px;
-    border: 0;
-    background-color: transparent;
+<style scoped lang="scss">
+.w-100-height{
+    height: 100vh;
 }
 </style>
