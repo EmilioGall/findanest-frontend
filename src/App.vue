@@ -15,7 +15,12 @@ export default {
 </script>
 
 <template>
-<<router-view></router-view>
+  <router-view></router-view>
+  <div class="container">
+      <AppHeader/>
+      
+  </div>
+
 </template>
 
 <style scoped lang="scss"></style>
