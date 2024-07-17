@@ -17,6 +17,22 @@ export default {
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100-height" src="/src/real estate/home6.jpg" alt="image1">
+
+                <!-- caption del carosello -->
+                <div class="carousel-caption carousel1">
+                    <p>1 / 3</p>
+                    <h5>Scopri la proprietà<br>Piu Facilmente</h5>
+                    <div class="mt-5 d-flex">
+                        <input type="text" class="form-control search" id="floatingInput"
+                        placeholder="Cerca...">
+
+                        <button class="btn btn-light btn-sm justify-content-md-end mx-2 px-3">
+                            <i class="fas fa-search"></i> Cerca
+                        </button>
+                    </div>
+                </div>
+
+
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100-height" src="..." alt="image2">
