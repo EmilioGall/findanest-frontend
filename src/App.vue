@@ -15,10 +15,7 @@ export default {
 </script>
 
 <template>
-
-  <AppHeader />
-  <AppMain />
-
+<<router-view></router-view>
 </template>
 
 <style scoped lang="scss"></style>

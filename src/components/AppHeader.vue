@@ -4,8 +4,8 @@ export default {
 
    data() {
       return {
-
-         //
+         
+         
 
       }
    },
@@ -26,11 +26,8 @@ export default {
 </script>
 
 <template>
+   
 
-<div class="text-primary my-3 mx-5">
-   <i class="fa-solid fa-house"></i>
-   Header
-</div>
 
 </template>
 
