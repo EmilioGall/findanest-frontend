@@ -8,7 +8,13 @@ export default {
                 { city: 'Roma', title: 'Ampio appartamento a Roma', image: 'https://via.placeholder.com/150/FFFF00/000000' },
                 { city: 'Tione', title: 'Monolocale affascinante a Tione', image: 'https://via.placeholder.com/150/00FF00/000000' },
                 { city: 'Trento', title: 'Condominio di lusso a Trento', image: 'https://via.placeholder.com/150/FF00FF/FFFFFF' }
-            ]
+            ],
+            selectedIndex: null // Indice della card selezionata
+        }
+    },
+    methods: {
+        selectApartment(index) {
+            this.selectedIndex = index; // Aggiorna l'indice della card selezionata
         }
     }
 }
@@ -19,7 +25,13 @@ export default {
         <div class="wrapper">
             <div class="container">
                 <div class="row">
-                    <div v-for="(apartment, index) in apartments" :key="index" class="card">
+                    <div 
+                        v-for="(apartment, index) in apartments" 
+                        :key="index" 
+                        class="card" 
+                        :class="{ selected: selectedIndex === index }" 
+                        @click="selectApartment(index)"
+                    >
                         <img :src="apartment.image" alt="house placeholder">
                         <div class="card-body">
                             <h5 class="card-text">{{ apartment.title }}</h5>
@@ -48,6 +60,11 @@ export default {
     border-radius: 4px;
     overflow: hidden;
     width: 250px;
+    cursor: pointer; 
+    transition: border-color 0.3s;
+}
+.card.selected {
+    border-color: #b6b8b9; 
 }
 .card img {
     width: 100%;
