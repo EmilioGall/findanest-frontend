@@ -23,7 +23,8 @@ export default {
                     <p>1 / 3</p>
                     <h5>Scopri la proprietà<br>Piu Facilmente</h5>
                     <div class="mt-5 d-flex">
-                        <input type="text" class="form-control search" id="floatingInput"
+
+                        <input type="text" class="form-control search w-50" id="floatingInput"
                         placeholder="Cerca...">
 
                         <button class="btn btn-light btn-sm justify-content-md-end mx-2 px-3">
@@ -53,6 +54,44 @@ export default {
 </template>
 <style scoped lang="scss">
 .w-100-height{
-    height: 100vh;
+    height: 90vh;
+    width: 100%;
+}
+.carousel-item{
+    min-height: 300px;
+}
+.carousel-caption{
+    text-align: left;
+    margin-bottom: 200px;
+    z-index: 2;
+}
+.carousel-caption h5{
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    line-height: 60px;
+    text-align: left;
+}
+.carousel-caption p{
+    width: 60%;
+    font-size: 16px;
+    line-height: 1.9;
+    text-align: left;
+}
+.carousel-item .carousel-caption input{
+    padding: 0.73rem 1rem;
+}
+
+//aggiunge il filtro scuro al background
+.carousel-inner::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
 }
 </style>
