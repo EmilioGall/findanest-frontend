@@ -1,5 +1,6 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import AppJumbotron from './components/AppJumbotron.vue';
 import AppMain from './components/AppMain.vue';
 
 
@@ -8,6 +9,7 @@ export default {
 
     AppHeader,
     AppMain,
+    AppJumbotron
 
   },
 
@@ -16,11 +18,8 @@ export default {
 
 <template>
   <router-view></router-view>
-  <div class="container">
       <AppHeader/>
-      
-  </div>
-
+      <AppJumbotron/>
 </template>
 
 <style scoped lang="scss"></style>
