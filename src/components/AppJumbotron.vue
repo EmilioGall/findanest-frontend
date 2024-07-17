@@ -42,6 +42,8 @@ export default{
 #searchbar{
     height: 30px;
     width: 60%;
+    border-radius: 5px;
+    border: 0.5px solid rgb(220, 211, 211);
 }
 .search{
     margin-left: -30px;
