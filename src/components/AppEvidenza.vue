@@ -13,70 +13,47 @@ export default {
             selectedIndex: null // Indice della card selezionata
         }
     },
-    methods: {
-        selectApartment(index) {
-            this.selectedIndex = index; // Aggiorna l'indice della card selezionata
-        }
-    }
+
 }
 </script>
 
 <template>
-    <div>
-        <div class="wrapper">
-            <div class="container">
-                <div class="title">
-                    <h3>Abbiamo selezionato questi alloggi per te</h3>
-                </div>
-                <div class="row">
-                    <div 
-                        v-for="(apartment, index) in apartments" 
-                        :key="index" 
-                        class="col-12 col-sm-4 col-md-2 col-lg-2" 
-                    >
-                        <div 
-                            class="card" 
-                            :class="{ selected: selectedIndex === index }" 
-                            @click="selectApartment(index)"
-                        >
-                            <img :src="apartment.image" alt="house placeholder">
-                            <div class="card-body">
-                                <h5 class="card-text">{{ apartment.title }}</h5>
-                                <p class="card-title">{{ apartment.city }}</p>
-                            </div>
+    <section class="container" style="margin-top: 100px;" >
+
+        <p class="pt-5">In Evidenza</p>
+        <div class="d-flex">
+            <h2>I nostri Alloggi piu Popolari</h2>
+            <h6 class="ms-auto">Scopri <span class="arrow-icon">&rarr;</span></h6>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-md-3 g-4 mt-2">
+            <div class="col">
+                <div class="card border-0 rounded-0">
+                    <img src="/src/real estate/home1.jpg" class="card-img-top rounded-0" alt="img1">
+                    <div class="card-body">
+                        <p class="cardtext text-muted">Trento, Italia</p>
+
+                        <div class="d-flex justify-content-center mt-3">
+                            <p class="mx-4 text-muted card-text"><i class="fa fa-car"></i> letti</p>
+                            <p class="mx-4 text-muted card-text"><i class="fa fa-play"></i> 8 * 8</p>
+                            <p class="mx-4 text-muted card-text"><i class="fa fa-compass"></i> 2000 m2</p>
+                        </div>
+
+                        <div class="d-flex my-2">
+                            <button class="btn btn-lg text-white bg-dark px-4 rounded-0">Prenota ora</button>
+                            <h5 class="my-auto ms-auto">$20,13,048</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 </template>
 
 <style scoped lang="scss">
-.wrapper {
-    background-color: antiquewhite;
-    padding: 20px; 
-}
-.title {
-    font-size: 30px;
-    margin-bottom: 25px;
-}
-.card {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    overflow: hidden;
-    cursor: pointer; 
-    transition: border-color 0.3s;
-}
-.card.selected {
-    border-color: #b6b8b9; 
-}
-.card img {
-    width: 100%;
-    height: auto;
-    margin-top: 5px;
-}
-.card-body {
-    padding: 2px;
-}
+    .arrow-icon{
+        font-size: 28px;
+        font-weight: 800;
+    }
 </style>
