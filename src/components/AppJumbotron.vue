@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -44,14 +44,8 @@ export default {
                 <!-- caption del carosello -->
                 <div class="carousel-caption carousel1">
                     <p>2 / 3</p>
-                    <h5>Scopri la proprietà<br>Piu Facilmente</h5>
-                    <div class="mt-5 d-flex">
-                        <input type="text" class="form-control search w-50 rounded-0" id="floatingInput"
-                            placeholder="Cerca...">
-                        <button class="btn btn-light btn-sm justify-content-md-end mx-2 px-3 rounded-0">
-                            <i class="fas fa-search"></i> Cerca
-                        </button>
-                    </div>
+                    <h5>Pubblica il tuo annuncio<br>Piu Facilmente</h5>
+                    <p><a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a></p>
                 </div>
             </div>
 
@@ -63,45 +57,45 @@ export default {
                 <div class="carousel-caption carousel1">
                     <p>3 / 3</p>
                     <h5>Scopri la proprietà<br>Piu Facilmente</h5>
-                    <div class="mt-5 d-flex">
-                        <input type="text" class="form-control search w-50 rounded-0" id="floatingInput"
-                            placeholder="Cerca...">
-                        <button class="btn btn-light btn-sm justify-content-md-end mx-2 px-3 rounded-0">
-                            <i class="fas fa-search"></i> Cerca
-                        </button>
-                    </div>
+                    <p><a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a></p>
                 </div>
             </div>
 
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+            <span class="visually-hidden">Previous</span>
+        </button>
 
-        <div class="col-md-4" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="..." class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+
+        <!-- card -->
+        <div class="col-md-4 z-1 psoition-absolute card-bottom card mb-3 card-color rounded-0" style="background: #000;" >
+            <div class="row align-items-center">
+
+                <div class="col-md-9">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        <h5 class="card-title text-light">Card title</h5>
+                        <p class="card-text text-light">This is a wider card with supporting text below as a natural lead-in to
                             additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"><small class="text-white">Last updated 3 mins ago</small></p>
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <img src="/src/real estate/project-3.jpg" class="img-fluid rounded-start" alt="card-img">
                 </div>
             </div>
         </div>
 
     </div>
 
-    
+
 </template>
 
 <style scoped lang="scss">
@@ -150,5 +144,19 @@ export default {
     left: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1;
+}
+
+//card presentazione
+.card-bottom{
+    right: 0;
+    margin-top: -178px;
+    border-radius: 0;
+}
+.card-text{
+    color: #aeaeae;
+}
+.card-color{
+    background: #000;
+    border-radius: 0;
 }
 </style>
