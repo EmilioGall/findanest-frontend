@@ -20,6 +20,7 @@ export default {
 </script>
 
 <template>
+  <AppHeader />
   <router-view></router-view>
       <AppHeader/>
       <AppJumbotron/>
