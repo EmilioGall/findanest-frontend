@@ -9,9 +9,7 @@ export default {
   components: {
 
     AppHeader,
-    AppMain,
-    AppJumbotron,
-    AppEvidenza,
+
     AppFooter,
 
   },
@@ -22,8 +20,7 @@ export default {
 <template>
   <AppHeader />
   <router-view></router-view>
-      <AppJumbotron/>
-      <AppEvidenza />
+      
       <AppFooter/>
 </template>
 
