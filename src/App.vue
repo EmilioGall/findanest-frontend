@@ -3,6 +3,7 @@ import AppHeader from './components/AppHeader.vue';
 import AppJumbotron from './components/AppJumbotron.vue';
 import AppMain from './components/AppMain.vue';
 import AppEvidenza from './components/AppEvidenza.vue';
+import AppFooter from './components/AppFooter.vue';
 
 export default {
   components: {
@@ -10,7 +11,8 @@ export default {
     AppHeader,
     AppMain,
     AppJumbotron,
-    AppEvidenza
+    AppEvidenza,
+    AppFooter,
 
   },
 
@@ -22,6 +24,7 @@ export default {
       <AppHeader/>
       <AppJumbotron/>
       <AppEvidenza />
+      <AppFooter/>
 </template>
 
 <style scoped lang="scss"></style>
