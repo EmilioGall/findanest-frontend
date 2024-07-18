@@ -17,9 +17,15 @@ export default {
 
 <template>
 
-    <AppJumbotron />
+    <AppJumbotron class="jumbo"/>
     <AppEvidenza />
-    <AppMain />
+
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+    .jumbo{
+        margin-top: -90px;
+        z-index: -1;
+    }
+
+</style>

@@ -9,7 +9,6 @@ export default {
   components: {
 
     AppHeader,
-
     AppFooter,
 
   },

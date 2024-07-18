@@ -13,7 +13,7 @@ export default {
 
 <template>
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
       <a class="navbar-brand" href="#">
         <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="w-50">
@@ -24,8 +24,8 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mg-lg-0">
-          <li v-for="route in menuRoutes" :key="route.name" class="nav-item">
-            <router-link :to="{ name: route.name }" class="nav-link" exact-active-class="active-link">
+          <li v-for="route in menuRoutes" :key="route.name" class="nav-item ">
+            <router-link :to="{ name: route.name }" class="nav-link text-light " exact-active-class="active-link text-dark ">
               {{ route.name }}
             </router-link>
           </li>
@@ -41,12 +41,17 @@ export default {
 @use "../scss/partials/variables" as *;
 
 nav {
-  background-color: $color-dark-green;
+  background-color: transparent;
+
+  
 
   li:last-child {
-    padding-left: 1em;
+    padding-left: 2em;
+
   }
 }
+
+
 
 .active-link {
   background-color: $color-light-green;
@@ -54,8 +59,8 @@ nav {
 }
 
 .navbar a {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .navbar-toggler {
