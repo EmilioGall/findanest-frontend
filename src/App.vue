@@ -17,10 +17,14 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader class="header" />
   <router-view></router-view>
       
       <AppFooter/>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+  .header{
+    z-index: 2;
+  }
+</style>

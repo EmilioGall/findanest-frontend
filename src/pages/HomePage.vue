@@ -23,9 +23,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
-    .jumbo{
-        margin-top: -90px;
-        z-index: -1;
-    }
+.jumbo{
+    margin-top: -80px;
+}
 
 </style>
