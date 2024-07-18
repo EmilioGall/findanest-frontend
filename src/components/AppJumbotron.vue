@@ -64,13 +64,13 @@ export default {
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="icon">&larr;</span>
             <span class="visually-hidden">Previous</span>
         </button>
 
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
             data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="icon">&rarr;</span>
             <span class="visually-hidden">Next</span>
         </button>
 
@@ -158,5 +158,34 @@ export default {
 .card-color{
     background: #000;
     border-radius: 0;
+}
+//icone di navigazione carosello
+.icon{
+    font-size: 40px;
+    font-weight: 700;
+    background: transparent;
+    border: 1px solid #ffffff74;
+    width: 80px;
+    height: 80px;
+    line-height: 1.8;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 767px){
+    .navbar-nav{
+        text-align: center;
+    }
+    .carousel-caption h5{
+        font-size: 30px;
+        letter-spacing: 0;
+        line-height: normal;
+    }
+    .carousel-caption p {
+        padding: 10px 15px;
+        font-size: 15px;
+    }
+    .carousel .card-bottom{
+        display: none;
+    }
 }
 </style>
