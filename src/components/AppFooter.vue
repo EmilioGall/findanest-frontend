@@ -20,13 +20,33 @@ export default {
 
                 <div class="col-lg-3">
                     <h5 class="text-light">Link Veloci</h5>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li><a href="#">Home</a></li>
                         <li><a href="#">In Evidenza</a></li>
                         <li><a href="#">Servizi</a></li>
                         <li><a href="#">Recendioni</a></li>
                         <li><a href="#">News</a></li>
                     </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <h5 class="text-light">Stai Connesso</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fab fa-facebook"></i> Faceboook</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> Linedin</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center text-light">
+                        Copyright &copy; 2024 <a href="https://boolean.co.uk/">Boolean</a>. All Rights Reserved.
+                    </p>
                 </div>
             </div>
         </div>
@@ -35,12 +55,13 @@ export default {
 </template>
 
 <style scoped lang="scss">
-    .bg-footer{
-        background-color: #000;
-        padding: 50px 0 30px;
-    }
-    .bg-footer a {
-        text-decoration: none;
-        color: #aeaeae;
-    }
+.bg-footer {
+    background-color: #000;
+    padding: 50px 0 30px;
+}
+
+.bg-footer a {
+    text-decoration: none;
+    color: #aeaeae;
+}
 </style>
