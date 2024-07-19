@@ -2,13 +2,16 @@
 import AppJumbotron from '../components/AppJumbotron.vue';
 import AppEvidenza from '../components/AppEvidenza.vue';
 import AppMain from '../components/AppMain.vue';
+import AppSearch from '../components/AppSearch.vue';
+
 
 export default {
     components: {
 
         AppJumbotron,
         AppEvidenza,
-        AppMain
+        AppMain,
+        AppSearch,
 
     },
 
@@ -18,6 +21,7 @@ export default {
 <template>
 
     <AppJumbotron class="jumbo"/>
+    <AppSearch/>
     <AppEvidenza />
 
 </template>

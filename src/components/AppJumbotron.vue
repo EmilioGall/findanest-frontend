@@ -2,25 +2,7 @@
 import axios from "axios";
 
 export default {
-    data() {
-        return {
-            searchTerm: "",
-            results: [],
-        };
-    },
 
-    methods: {
-        async handleSearch() {
-            try {
-                const response = await axios.get(`http://127.0.0.1:8000/search`, {
-                    params: { query: this.searchTerm },
-                });
-                this.results = response.data;
-            } catch (error) {
-                console.error(error);
-            }
-        },
-    },
 };
 </script>
 
@@ -38,17 +20,7 @@ export default {
                     <p>1 / 3</p>
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
                     <br>
-                    <div class="input-group">
-                        <form @submit.prevent="handleSearch">
-                            <input class="form-control-sm" type="text" v-model="searchTerm" placeholder="Cerca le case..." />
-                            <button class="search-btn btn ms-2 " type="submit">Cerca</button>
-                        </form>
-                        <ul>
-                            <li v-for="house in results" :key="house.id">
-                                {{ house.title }} - {{ house.address }}
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
             <div class="carousel-item">
@@ -89,11 +61,7 @@ export default {
 .easyCap{
     color: $color-light-green;
 }
-.search-btn {
-    background-color: $color-light-green;
-    height: 45px;
-    margin-top: -3px;
-}
+
 
 .w-100-height {
     height: 90vh;
@@ -126,11 +94,6 @@ export default {
     text-align: left;
 }
 
-.carousel-item .carousel-caption input {
-    padding: 0.73rem 1rem;
-    height: 45px;
-    border: 0;
-}
 
 .carousel-inner::before {
     content: "";

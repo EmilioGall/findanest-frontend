@@ -1,0 +1,73 @@
+<script>
+export default {
+    data() {
+        return {
+            searchTerm: "",
+            results: [],
+        };
+    },
+    methods: {
+        async handleSearch() {
+            try {
+                const response = await axios.get(`http://127.0.0.1:8000/search`, {
+                    params: { query: this.searchTerm },
+                });
+                this.results = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+    },
+}
+</script>
+
+<template>
+    <div class="container">
+        <div class="input-group">
+            <form @submit.prevent="handleSearch" class="search-form">
+                <input class="form-control-sm search-input" type="text" v-model="searchTerm" placeholder="Cerca le case..." />
+                <button class="search-btn btn ms-2" type="submit">Cerca</button>
+            </form>
+            <ul>
+                <li v-for="house in results" :key="house.id">
+                    {{ house.title }} - {{ house.address }}
+                </li>
+            </ul>
+            
+            <div class="mt-3">
+               
+                
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped lang="scss">
+@use "../scss/partials/variables" as *;
+
+.search-form {
+    display: flex;
+    width: 100%;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 0.73rem 1rem;
+    height: 45px;
+    border: 0;
+}
+
+.search-btn {
+    background-color: $color-light-green;
+    height: 48px;
+    margin-top: -2px;
+}
+.input-group{
+
+    padding: 1.5rem;
+    padding-bottom: 4rem;
+    border-radius: 20px;
+    margin-top: -210px;
+    z-index: 2;
+}
+</style>
