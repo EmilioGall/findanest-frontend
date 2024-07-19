@@ -5,7 +5,12 @@ export default {
             type: Object,
             required: true
         }
-    }
+    },
+    data() {
+        return {
+             imageBaseUrl: 'http://127.0.0.1:8000/storage'
+        }
+    },
 }
 </script>
 
@@ -13,7 +18,12 @@ export default {
     <!-- colonna della card -->
     <div class="col">
         <div class="card border-0 rounded-0">
-            <img :src="house.image" class="card-img-top rounded-0" :alt="house.title">
+            <img 
+            :src="house.image
+            ? `${imageBaseUrl}/${house.image}`
+            :`https://placehold.co/500x300?text=immagine+non+disponibile`" 
+            class="card-img-top rounded-0" 
+            :alt="house.title">
             <!-- corpo della card -->
             <div class="card-body">
                 <!-- testo della card -->
@@ -29,7 +39,7 @@ export default {
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
                     <button class="btn btn-lg px-4 rounded custom-color">Prenota ora</button>
-                    <h5 class="my-auto ms-auto">${{ house.price }}</h5>
+                    <h5 class="my-auto ms-auto">€ {{ house.price }}</h5>
                 </div>
             </div>
         </div>
