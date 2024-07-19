@@ -4,6 +4,7 @@ export default {
         return {
             searchTerm: "",
             results: [],
+            selectedFilters: [],
             serviziCasa: {
                 "TV": "fas fa-tv",
                 "WiFi": "fas fa-wifi",
@@ -11,7 +12,7 @@ export default {
                 "Cucina Attrezzata": "fas fa-utensils",
                 "Parcheggio": "fas fa-car",
                 "Aria Condizionata": "fas fa-air-freshener",
-                "Lavastoviglie": "fas fa-dishwasher", 
+                "Lavastoviglie": "fa-solid fa-jug-detergent",  
                 "Vasca Idromassaggio": "fas fa-hot-tub",
                 "Palestra": "fas fa-dumbbell",
                 "Camino": "fas fa-fire"  
@@ -29,7 +30,14 @@ export default {
                 console.error(error);
             }
         },
-    },
+        toggleFilter(service) {
+            if (this.selectedFilters.includes(service)) {
+                this.selectedFilters = this.selectedFilters.filter(item => item !== service);
+            } else {
+                this.selectedFilters.push(service);
+            }
+        }
+    }
 }
 </script>
 
@@ -48,7 +56,12 @@ export default {
             
             <div class="mt-3">
                 <div class="icon-list text-light">
-                    <div v-for="(iconClass, service) in serviziCasa" :key="service" class="icon-item">
+                    <div 
+                        v-for="(iconClass, service) in serviziCasa" 
+                        :key="service" 
+                        :class="['icon-item', { activeFilter: selectedFilters.includes(service) }]" 
+                        @click="toggleFilter(service)"
+                    >
                         <i :class="iconClass"></i>
                         <span>{{ service }}</span>
                     </div>
@@ -89,7 +102,6 @@ export default {
 
 .icon-list {
     display: flex;
-    
     padding: 1rem 0;
     gap: 2rem;
 }
@@ -102,6 +114,12 @@ export default {
     justify-content: center;
     margin-right: 1rem;
     text-align: center;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.icon-item:hover {
+    color: $color-light-green;
 }
 
 .icon-item i {
@@ -112,6 +130,10 @@ export default {
     margin-top: 0.5rem;
     font-size: 0.85rem;
     white-space: nowrap;
+}
+
+.activeFilter {
+    color: $color-light-green;
 }
 
 .icon-list::-webkit-scrollbar {
