@@ -14,15 +14,22 @@ export default {
     data() {
         return {
             homes: [],
+            sponsoredHomes: []
         };
     },
     created() {
         axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
             this.homes = resp.data.result;
-            console.log(this.homes);
+            this.sponsoredHomes = this.homes.filter(house => house.sponsored === 1);
+            this.homes = this.homes.filter(house => house.sponsored !== 1);
+            console.log('Sponsored Homes:', this.sponsoredHomes);
+            console.log('Homes:', this.homes);
+        }).catch(error => {
+            console.error('Errore nella richiesta:', error);
         });
     },
 }
+
 </script>
 
 <template>
@@ -31,16 +38,16 @@ export default {
         <!-- titolo e descrizione sezione -->
         <p class="pt-5">In Evidenza</p>
         <div class="d-flex">
-            <h2>I nostri Alloggi piu Popolari</h2>
+            <h2>I nostri Alloggi più Popolari</h2>
             <h6 class="ms-auto">Scopri <span class="arrow-icon">&rarr;</span></h6>
         </div>
         <!-- fine titolo e descrizione -->
 
         <!-- formattazione delle card -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
-            <div v-for="house in homes" :key="house.id" class="col">
+            <div v-for="sponsoredHouse in sponsoredHomes" :key="sponsoredHouse.id" class="col">
                 <!-- sezione dedicata alle cards -->
-                <AppCard :house="house" />
+                <AppCard :house="sponsoredHouse" />
                 <!-- fine sezione dedicata alle cards -->
             </div>
         </div>
@@ -56,18 +63,22 @@ export default {
             <div class="row" style="margin-top: 25%;">
                 <!-- sezione delle card annunci non sponsorizzati-->
                 <section class="container cardsnormal">
-                    <p class="pt-5 text-light">Le nostre proproste</p>
+                    <p class="pt-5 text-light">Le nostre proposte</p>
                     <div class="d-flex">
-                        <h2 class="customhome">I nostri Alloggi piu recenti</h2>
+                        <h2 class="customhome">I nostri Alloggi più recenti</h2>
                         <h6 class="ms-auto text-light">Scopri <span class="arrow-icon text-light">&rarr;</span></h6>
                     </div>
 
                     <!-- formattazione cards -->
+                    <!-- formattazione delle card -->
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
-                        <!-- card degli annunci non sponsorizzati -->
-                        <AppAnnunci />
-                        <!-- fine card degli annunci non sponsorizzati -->
+                        <div v-for="house in homes" :key="house.id" class="col">
+                            <!-- sezione dedicata alle cards -->
+                            <AppCard :house="house" />
+                            <!-- fine sezione dedicata alle cards -->
+                        </div>
                     </div>
+                    <!-- fine formattazione delle cards -->
                     <!-- fine formattazione cards -->
                 </section>
                 <!-- fine sezione delle card annunci non sponsorizzati -->
@@ -81,7 +92,10 @@ export default {
 
                 <!-- inizio colonna quotazione -->
                 <div class="col-lg-8 mb-5 mt-5">
-                    <h6 class="lh-lg" style="color: #b5b5b5;">&ldquo; Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae ad, consectetur perspiciatis recusandae quidem iure quia itaque obcaecati minima error quae quaerat ab atque libero est! Eum temporibus dicta voluptatem? &rdquo;</h6>
+                    <h6 class="lh-lg" style="color: #b5b5b5;">&ldquo; Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Repudiandae ad, consectetur perspiciatis recusandae quidem iure quia itaque
+                        obcaecati minima error quae quaerat ab atque libero est! Eum temporibus dicta voluptatem?
+                        &rdquo;</h6>
                 </div>
                 <!-- fine colonna quotazione -->
             </div>
@@ -112,6 +126,7 @@ export default {
     </section>
     <!-- fine background grigio e logo -->
 </template>
+
 
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;

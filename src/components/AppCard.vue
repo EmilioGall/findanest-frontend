@@ -16,7 +16,7 @@ export default {
 
 <template>
     <!-- colonna della card -->
-    <div class="col">
+    <div class="col" >
         <div class="card border-0 rounded-0">
             <img 
             :src="house.image
