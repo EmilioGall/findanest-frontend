@@ -25,12 +25,19 @@ export default {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mg-lg-0">
           <li v-for="route in menuRoutes" :key="route.name" class="nav-item ">
-            <router-link :to="{ name: route.name }" class="nav-link text-light " exact-active-class="active-link text-dark ">
+            <router-link :to="{ name: route.name }" class="nav-link text-light "
+              exact-active-class="active-link text-dark ">
               {{ route.name }}
             </router-link>
           </li>
+          <li class="d-flex backend-links">
+            <a href="http://127.0.0.1:8000" class="nav-link text-light ">Pubblica il tuo annuncio</a>
+          </li>
           <li>
-            <a href="http://127.0.0.1:8000/login" class="nav-link text-light">Login</a>
+            <a href="http://127.0.0.1:8000/login" class="nav-link text-light publish-home">Login</a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:8000/register" class="nav-link text-light publish-home">Registrati</a>
           </li>
         </ul>
       </div>
@@ -45,16 +52,17 @@ export default {
 
 nav {
   background-color: transparent;
-
-  
-
-  li:last-child {
-    padding-left: 2em;
-
-  }
 }
 
+.backend-links {
+  border-left: 1px solid white;
+}
 
+.publish-home {
+  border: 1px solid $color-light-green;
+  border-radius: 5px;
+  margin: 2px;
+}
 
 .active-link {
   background-color: $color-light-green;

@@ -28,9 +28,11 @@ export default {
         async handleSearch() {
             try {
                 const response = await axios.get(`http://127.0.0.1:8000/search`, {
+                    //da aggiungere l'array di filtri
                     params: { query: this.searchTerm },
                 });
                 this.results = response.data;
+                //errori
             } catch (error) {
                 console.error(error);
             }
@@ -52,7 +54,7 @@ export default {
         <div class="input-group">
             <form @submit.prevent="handleSearch" class="search-form">
                 <input class="form-control-sm search-input" type="text" v-model="searchTerm"
-                    placeholder="Cerca le case..." />
+                    placeholder="Cerca le case (eg. Titolo, Città)..." />
                 <button class="search-btn btn ms-2" type="submit">Cerca</button>
             </form>
             <ul>
