@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
+import SinglePage from "./pages/SinglePage.vue";
 
 const routes = [
   {
@@ -18,6 +19,14 @@ const routes = [
     component: HomePage,
   },
 ];
+const singlePage = [
+  {
+    path : "/singlePage",
+    name : "SinglePge",
+    component : SinglePage
+  }
+
+]
 
 const router = createRouter({
   history: createWebHistory(),

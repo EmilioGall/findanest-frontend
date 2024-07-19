@@ -20,7 +20,7 @@ export default {
   <AppHeader class="header" />
   <router-view></router-view>
       
-      <AppFooter/>
+  <AppFooter/>
 </template>
 
 <style scoped lang="scss">
