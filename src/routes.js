@@ -21,8 +21,8 @@ const routes = [
 ];
 const singlePage = [
   {
-    path : "/singlePage",
-    name : "SinglePge",
+    path : "/singlepage",
+    name : "singlepage",
     component : SinglePage
   }
 
