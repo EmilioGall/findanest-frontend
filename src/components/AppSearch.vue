@@ -6,16 +6,21 @@ export default {
             results: [],
             selectedFilters: [],
             serviziCasa: {
-                "TV": "fas fa-tv",
-                "WiFi": "fas fa-wifi",
+                "Ascensore": "fas fa-elevator",
+                "Garage": "fas fa-car-garage",
+                "Posto auto": "fas fa-parking",
+                "Cantina": "fas fa-cube",
+                "Balcone": "fas fa-balcony",
+                "Giardino": "fas fa-tree",
+                "Aria condizionata": "fas fa-snowflake",
+                "Cucina attrezzata": "fas fa-utensils",
+                "Lavanderia": "fas fa-washing-machine",
                 "Piscina": "fas fa-swimming-pool",
-                "Cucina Attrezzata": "fas fa-utensils",
-                "Parcheggio": "fas fa-car",
-                "Aria Condizionata": "fas fa-air-freshener",
-                "Lavastoviglie": "fa-solid fa-jug-detergent",  
-                "Vasca Idromassaggio": "fas fa-hot-tub",
                 "Palestra": "fas fa-dumbbell",
-                "Camino": "fas fa-fire"  
+                "Portineria": "fas fa-door-open",
+                "Videocitofono": "fas fa-video",
+                "Allarme": "fas fa-bell",
+                "Wi-Fi": "fas fa-wifi"
             }
         };
     },
