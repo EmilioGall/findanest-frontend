@@ -36,7 +36,8 @@ export default {
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image1" />
                 <div class="carousel-caption carousel1">
                     <p>1 / 3</p>
-                    <h5>La tua vacanza<br />a tutto relax</h5>
+                    <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
+                    <br>
                     <div class="input-group">
                         <form @submit.prevent="handleSearch">
                             <input class="form-control-sm" type="text" v-model="searchTerm" placeholder="Cerca le case..." />
@@ -54,7 +55,7 @@ export default {
                 <img class="d-block w-100-height" src="/src/real estate/home7.jpg" alt="image2" />
                 <div class="carousel-caption carousel1">
                     <p>2 / 3</p>
-                    <h5>Pubblica il tuo annuncio<br />Piu Facilmente</h5>
+                    <h5>Pubblica il tuo annuncio<br /><span class="easyCap">Piu Facilmente</span></h5>
                     <p>
                         <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
                     </p>
@@ -64,7 +65,7 @@ export default {
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image3" />
                 <div class="carousel-caption carousel1">
                     <p>3 / 3</p>
-                    <h5>Scopri la proprietà<br />Piu Facilmente</h5>
+                    <h5>Scopri la proprietà<br /><span class="easyCap">Piu Facilmente</span></h5>
                     <p>
                         <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
                     </p>
@@ -85,6 +86,9 @@ export default {
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
 
+.easyCap{
+    color: $color-light-green;
+}
 .search-btn {
     background-color: $color-light-green;
     height: 45px;
