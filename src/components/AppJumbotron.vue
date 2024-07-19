@@ -8,11 +8,11 @@ export default {
 
 <template>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
+        <!-- <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"></li>
             <li data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"></li>
-        </ol>
+        </ol> -->
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image1" />
