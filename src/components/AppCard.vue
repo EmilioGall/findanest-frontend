@@ -5,29 +5,25 @@ export default {
 </script>
 
 <template>
-    <section class="container" style="margin-top: 100px;">
-
-        <p class="pt-5">In Evidenza</p>
-        <div class="d-flex">
-            <h2>I nostri Alloggi piu Popolari</h2>
-            <h6 class="ms-auto">Scopri <span class="arrow-icon">&rarr;</span></h6>
-        </div>
-
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+            <!-- colonna della card -->
             <div class="col">
-                <div class="card border-0 rounded-0">
+                <div class="card border-0 rounded-0">   <!--Bordi della colonna-->
                     <img src="/src/real estate/home1.jpg" class="card-img-top rounded-0" alt="img1">
+                    <!-- corpo della card -->
                     <div class="card-body">
+                        <!-- testo della card -->
                         <p class="cardtext text-muted">Trento, Italia</p>
 
+                        <!-- caratteristice della card -->
                         <div class="d-flex justify-content-center mt-3">
                             <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
                             <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i> 8 * 8</p>
                             <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> 2000 mq</p>
                         </div>
 
+                        <!-- bottone della card -->
                         <div class="d-flex my-2">
-                            <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                            <button class="btn btn-lg px-4 rounded custom-color">Prenota ora</button>
                             <h5 class="my-auto ms-auto">$20,13,048</h5>
                         </div>
                     </div>
@@ -76,8 +72,17 @@ export default {
             </div> -->
 
             
-        </div>
-    </section>
+
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use "../scss/partials/variables" as *;
+button{
+    border: 3px solid $color-light-green;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+button:hover{
+    background-color: $color-light-green;
+    transform: scale(1.1);
+}
+</style>
