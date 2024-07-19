@@ -55,7 +55,7 @@ nav {
 }
 
 .backend-links {
-  border-left: 1px solid white;
+  border-left: 2px solid $color-light-green;
 }
 
 .publish-home {
