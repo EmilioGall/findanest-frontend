@@ -94,11 +94,161 @@ export default {
     <section class="bg-dark" style="margin-top: -15%;">
         <div class="container pt-5">
             <div class="row" style="margin-top: 25%;">
-                <div class="col-lg-4">
+
+                <!-- cards -->
+                <section class="container cardsnormal">
+                    <p class="pt-5 text-light">Le nostre proproste</p>
+                    <div class="d-flex">
+                        <h2 class="customhome">I nostri Alloggi piu recenti</h2>
+                        <h6 class="ms-auto text-light">Scopri <span class="arrow-icon text-light">&rarr;</span></h6>
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home1.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- seconda casa -->
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home2.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- terza casa -->
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home3.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home1.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- seconda casa -->
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home2.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- terza casa -->
+                        <div class="col">
+                            <div class="card border-0 rounded-0">
+                                <img src="/src/real estate/home3.jpg" class="card-img-top rounded-0" alt="img1">
+                                <div class="card-body">
+                                    <p class="cardtext text-muted">Trento, Italia</p>
+
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> 3 letti</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-person-shelter"></i>
+                                            8 * 8</p>
+                                        <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i>
+                                            2000 mq</p>
+                                    </div>
+
+                                    <div class="d-flex my-2">
+                                        <button class="btn btn-lg text-white bg-dark px-4 rounded">Prenota ora</button>
+                                        <h5 class="my-auto ms-auto">$20,13,048</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                
+
+                <div class="col-lg-4 mt-5">
                     <h2 style="color: #b5b5b5;">Elon Musk</h2>
                     <p style="color: #b5b5b5;">Fondatore Find-A-Nest</p>
                 </div>
-                <div class="col-lg-8 mb-5">
+                <div class="col-lg-8 mb-5 mt-5">
                     <h6 class="lh-lg" style="color: #b5b5b5;">&ldquo; Lorem ipsum dolor, sit amet consectetur
                         adipisicing elit.
                         Repudiandae ad, consectetur perspiciatis recusandae quidem iure quia itaque obcaecati minima
@@ -136,11 +286,18 @@ export default {
 
 
 
+
+
+
 </template>
 
 <style scoped lang="scss">
+@use "../scss/partials/variables" as *;
 .arrow-icon {
     font-size: 28px;
     font-weight: 800;
+}
+.customhome{
+   color: $color-light-green;
 }
 </style>
