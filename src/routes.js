@@ -1,12 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 
-const ExternalRedirect = {
-  created() {
-    window.location.href = "http://127.0.0.1:8000/login";
-  },
-};
-
 const routes = [
   {
     path: "/",
@@ -22,11 +16,6 @@ const routes = [
     path: "/contatti",
     name: "Contatti",
     component: HomePage,
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: ExternalRedirect,
   },
 ];
 
