@@ -86,7 +86,9 @@ export default {
 @use "../scss/partials/variables" as *;
 
 .search-btn {
-    background-color: $color-dark-green;
+    background-color: $color-light-green;
+    height: 45px;
+    margin-top: -3px;
 }
 
 .w-100-height {
@@ -122,6 +124,8 @@ export default {
 
 .carousel-item .carousel-caption input {
     padding: 0.73rem 1rem;
+    height: 45px;
+    border: 0;
 }
 
 .carousel-inner::before {
