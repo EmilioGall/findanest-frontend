@@ -34,7 +34,7 @@ export default {
                 </div>
             </div>
             <!-- seconda casa -->
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card border-0 rounded-0">
                     <img src="/src/real estate/home2.jpg" class="card-img-top rounded-0" alt="img1">
                     <div class="card-body">
@@ -52,10 +52,10 @@ export default {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- terza casa -->
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card border-0 rounded-0">
                     <img src="/src/real estate/home3.jpg" class="card-img-top rounded-0" alt="img1">
                     <div class="card-body">
@@ -73,8 +73,9 @@ export default {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
+            
         </div>
     </section>
 </template>
