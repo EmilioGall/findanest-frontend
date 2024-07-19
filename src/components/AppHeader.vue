@@ -31,13 +31,13 @@ export default {
             </router-link>
           </li>
           <li class="d-flex backend-links">
-            <a href="http://127.0.0.1:8000" class="nav-link text-light ">Pubblica il tuo annuncio</a>
+            <a href="http://127.0.0.1:8000" class="nav-link text-light publish-link">Pubblica il tuo annuncio</a>
           </li>
           <li>
-            <a href="http://127.0.0.1:8000/login" class="nav-link text-light publish-home">Login</a>
+            <a href="http://127.0.0.1:8000/login" class="nav-link publish-home">Login</a>
           </li>
           <li>
-            <a href="http://127.0.0.1:8000/register" class="nav-link text-light publish-home">Registrati</a>
+            <a href="http://127.0.0.1:8000/register" class="nav-link  publish-home">Registrati</a>
           </li>
         </ul>
       </div>
@@ -62,6 +62,36 @@ nav {
   border: 1px solid $color-light-green;
   border-radius: 5px;
   margin: 2px;
+  color: white;
+}
+.publish-home:hover {
+  background-color: $color-light-green;
+  color: black;
+}
+.publish-link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+}
+.publish-link:hover {
+  color: $color-light-green;
+}
+.publish-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 10px;
+  background: $color-light-green;
+  transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+}
+.publish-link:hover::after {
+  width: 93%;
+  left: 10px;
+  background: $color-light-green;
 }
 
 .active-link {
@@ -80,4 +110,5 @@ nav {
   line-height: 0.3;
   background: #fff;
 }
+
 </style>
