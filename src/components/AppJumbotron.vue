@@ -44,7 +44,7 @@ export default {
                         </form>
                         <ul>
                             <li v-for="house in results" :key="house.id">
-                                {{ house.address }}
+                                {{ house.title }}
                             </li>
                         </ul>
                     </div>
