@@ -2,6 +2,7 @@
 // importazioni
 import AppCard from '../components/AppCard.vue'
 import AppAnnunci from './AppAnnunci.vue';
+import axios from 'axios';
 // fine importazioni
 
 export default {
@@ -14,18 +15,16 @@ export default {
 
     data() {
         return {
-            apartments: [
-                { city: 'Milano', title: 'Loft moderno a Milano', image: 'https://via.placeholder.com/150/0000FF/808080' },
-                { city: 'Torino', title: 'Appartamento accogliente a Torino', image: 'https://via.placeholder.com/150/FF0000/FFFFFF' },
-                { city: 'Roma', title: 'Ampio appartamento a Roma', image: 'https://via.placeholder.com/150/FFFF00/000000' },
-                { city: 'Tione', title: 'Monolocale affascinante a Tione', image: 'https://via.placeholder.com/150/00FF00/000000' },
-                { city: 'Trento', title: 'Condominio di lusso a Trento', image: 'https://via.placeholder.com/150/FF0000/FFFFFF' },
-                { city: 'Trento', title: 'Condominio di lusso a Trento', image: 'https://via.placeholder.com/150/FF00FF/GGGGGG' }
-            ],
-            selectedIndex: null // Indice della card selezionata
-        }
+            homes: [],
+        };
     },
-
+    created() {
+        axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
+            this.homes = resp.data.result;
+            console.log(this.homes);
+        });
+        
+    },
 }
 </script>
 
