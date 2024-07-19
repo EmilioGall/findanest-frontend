@@ -1,6 +1,5 @@
 <script>
 import AppJumbotron from '../components/AppJumbotron.vue';
-import AppEvidenza from '../components/AppEvidenza.vue';
 import AppMain from '../components/AppMain.vue';
 import AppSearch from '../components/AppSearch.vue';
 
@@ -9,7 +8,6 @@ export default {
     components: {
 
         AppJumbotron,
-        AppEvidenza,
         AppMain,
         AppSearch,
 
@@ -22,7 +20,7 @@ export default {
 
     <AppJumbotron class="jumbo"/>
     <AppSearch/>
-    <AppEvidenza />
+    <AppMain />
 
 </template>
 
