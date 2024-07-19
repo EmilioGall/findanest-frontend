@@ -15,21 +15,35 @@ export default {
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
+
+      <!-- logo -->
       <a class="navbar-brand" href="#">
         <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="w-50">
       </a>
+      <!-- fine logo -->
+
+      <!-- button per il responsive -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- fine button per il responive -->
+
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- link della navbar -->
         <ul class="navbar-nav ms-auto mg-lg-0">
+          <!-- link inseriti dinamicamente -->
           <li v-for="route in menuRoutes" :key="route.name" class="nav-item ">
             <router-link :to="{ name: route.name }" class="nav-link text-light "
               exact-active-class="active-link text-dark ">
               {{ route.name }}
             </router-link>
           </li>
+          <!-- fine link inseriti dinamicamente -->
+
+          <!-- link per il backend -->
           <li class="d-flex backend-links">
             <a href="http://127.0.0.1:8000" class="nav-link text-light publish-link">Pubblica il tuo annuncio</a>
           </li>
@@ -39,7 +53,10 @@ export default {
           <li>
             <a href="http://127.0.0.1:8000/register" class="nav-link  publish-home">Registrati</a>
           </li>
+          <!-- fine link per il backend -->
+
         </ul>
+        <!-- fine link navbar -->
       </div>
     </div>
   </nav>
