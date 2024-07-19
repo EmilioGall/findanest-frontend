@@ -40,7 +40,7 @@ export default {
                     <div class="input-group">
                         <form @submit.prevent="handleSearch">
                             <input class="form-control-sm" type="text" v-model="searchTerm" placeholder="Cerca le case..." />
-                            <button class="search-btn btn ms-2" type="submit">Cerca</button>
+                            <button class="search-btn btn ms-2 " type="submit">Cerca</button>
                         </form>
                         <ul>
                             <li v-for="house in results" :key="house.id">

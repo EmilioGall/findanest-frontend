@@ -30,7 +30,7 @@ export default {
             </router-link>
           </li>
           <li>
-            <a href="http://127.0.0.1:8000/login" class="nav-link">Login</a>
+            <a href="http://127.0.0.1:8000/login" class="nav-link text-light">Login</a>
           </li>
         </ul>
       </div>
