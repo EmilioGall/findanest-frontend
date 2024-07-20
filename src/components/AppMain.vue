@@ -1,3 +1,37 @@
+<script>
+// importazioni
+import AppCard from '../components/AppCard.vue';
+import axios from 'axios';
+// fine importazioni
+
+export default {
+    components: {
+        AppCard
+    },
+    data() {
+        return {
+            homes: [],
+            sponsoredHomes: []
+        };
+    },
+    created() {
+        axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
+            this.homes = resp.data.result;
+            this.sponsoredHomes = this.homes.filter(house => house.sponsored === 1);
+            this.homes = this.homes.filter(house => house.sponsored !== 1);
+            console.log('Sponsored Homes:', this.sponsoredHomes);
+            console.log('Homes:', this.homes);
+        }).catch(error => {
+            console.error('Errore nella richiesta:', error);
+        });
+    },
+    methods: {
+        navigateToSinglePage(slug) {
+            this.$router.push({ name: 'singlepage', params: { slug } });
+        }
+    }
+}
+</script>
 <template>
     <!-- container delle cards -->
     <section class="container" style="margin-top: 10px;">
@@ -13,7 +47,7 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
             <div v-for="sponsoredHouse in sponsoredHomes" :key="sponsoredHouse.id" class="col">
                 <!-- sezione dedicata alle cards -->
-                <AppCard :house="sponsoredHouse" @houseSelected="navigateToSinglePage"/>
+                <AppCard :house="sponsoredHouse" @houseSelected="navigateToSinglePage" class="cardCustom"/>
                 <!-- fine sezione dedicata alle cards -->
             </div>
         </div>
@@ -40,7 +74,7 @@
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
                         <div v-for="house in homes" :key="house.id" class="col">
                             <!-- sezione dedicata alle cards -->
-                            <AppCard :house="house" @houseSelected="navigateToSinglePage"/>
+                            <AppCard :house="house" @houseSelected="navigateToSinglePage" class="cardCustom"/>
                             <!-- fine sezione dedicata alle cards -->
                         </div>
                     </div>
@@ -93,43 +127,13 @@
     <!-- fine background grigio e logo -->
 </template>
 
-<script>
-// importazioni
-import AppCard from '../components/AppCard.vue';
-import axios from 'axios';
-// fine importazioni
 
-export default {
-    components: {
-        AppCard
-    },
-    data() {
-        return {
-            homes: [],
-            sponsoredHomes: []
-        };
-    },
-    created() {
-        axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
-            this.homes = resp.data.result;
-            this.sponsoredHomes = this.homes.filter(house => house.sponsored === 1);
-            this.homes = this.homes.filter(house => house.sponsored !== 1);
-            console.log('Sponsored Homes:', this.sponsoredHomes);
-            console.log('Homes:', this.homes);
-        }).catch(error => {
-            console.error('Errore nella richiesta:', error);
-        });
-    },
-    methods: {
-        navigateToSinglePage(slug) {
-            this.$router.push({ name: 'singlepage', params: { slug } });
-        }
-    }
-}
-</script>
 
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
+.cardCustom{
+    cursor: pointer;
+}
 
 .arrow-icon {
     font-size: 28px;
@@ -140,3 +144,6 @@ export default {
     color: $color-light-green;
 }
 </style>
+
+
+
