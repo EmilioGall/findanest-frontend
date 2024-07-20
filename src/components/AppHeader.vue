@@ -1,10 +1,10 @@
 <script>
-import { routes } from '../routes';
+import { links } from '../routes';
 
 export default {
   data() {
     return {
-      menuRoutes: routes,
+      menuRoutes: links,
     };
   },
 };

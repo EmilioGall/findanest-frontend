@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import SinglePage from "./pages/SinglePage.vue";
 
-const routes = [
+const links = [
   {
     path: "/",
     name: "Home",
@@ -18,7 +18,10 @@ const routes = [
     name: "Contatti",
     component: HomePage,
   },
-  
+];
+
+const routes = [
+  ...links,
   {
     path: "/singlepage/:slug",
     name: "singlepage",
@@ -31,4 +34,4 @@ const router = createRouter({
   routes,
 });
 
-export { router, routes };
+export { router, routes, links };
