@@ -4,14 +4,17 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
-			house: null,  // Initialize house data as null
+			// variabile house inizializzata nulla
+			house: null, 
+			// link per le immagini
+			imageBaseUrl: 'http://127.0.0.1:8000/storage'
 		}
 	},
 	created() {
 		const slug = this.$route.params.slug;
 		axios.get(`http://127.0.0.1:8000/api/houses/${slug}`)
 			.then((resp) => {
-				this.house = resp.data.result;  // Assign the fetched data to the house property
+				this.house = resp.data.result;  // assegna ad house i risultati
 				console.log(resp);
 			})
 			.catch(error => {
@@ -34,7 +37,12 @@ export default {
 			<div class="row py-3 align-items-center">
 				<div class="col-md-6 mt-md-0 mt-4">
 					<div class="mb-5 mb-lg-3">
-						<img class="img-fluid" :src="house.image || 'https://via.placeholder.com/300'" alt="House Image">
+						<img 
+            :src="house.image
+            ? `${imageBaseUrl}/${house.image}`
+            :`https://placehold.co/500x300?text=immagine+non+disponibile`" 
+            class="card-img-top rounded-0" 
+            :alt="house.title">
 					</div>
 				</div>
 				<div class="col-md-6 ps-md-5">
