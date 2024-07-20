@@ -49,17 +49,18 @@ export default {
 					<div class="mb-5 mb-lg-3">
 						<h4>{{ house.title }}</h4>
 						<p>{{ house.description }}</p>
-						<p><strong>Price:</strong> €{{ house.price }}</p>
-						<p><strong>Address:</strong> {{ house.address }}</p>
-						<p><strong>Rooms:</strong> {{ house.rooms }}</p>
-						<p><strong>Beds:</strong> {{ house.beds }}</p>
-						<p><strong>Bathrooms:</strong> {{ house.bathrooms }}</p>
-						<p><strong>Square Meters:</strong> {{ house.sqm }} sqm</p>
-						<a class="btn btn-lg btn-primary" href="#">View Gallery</a>
+						<p><strong>Prezzo:</strong> €{{ house.price }}</p>
+						<p><strong>Indirizzo:</strong> {{ house.address }}</p>
+						<p><strong>Stanze:</strong> {{ house.rooms }}</p>
+						<p><strong>Letti:</strong> {{ house.beds }}</p>
+						<p><strong>Bagni:</strong> {{ house.bathrooms }}</p>
+						<p><strong>Area:</strong> {{ house.sqm }} m2</p>
+						<a class="btn btn-lg btn-primary" href="#">Visualizza La Galleria</a>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- caricamento della chiamata api -->
 		<div v-else class="text-center">
 			<p>Loading...</p>
 		</div>

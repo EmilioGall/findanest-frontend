@@ -68,7 +68,7 @@ export default {
 @use "../scss/partials/variables" as *;
 
 nav {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.8); 
 }
 
 .backend-links {

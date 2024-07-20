@@ -37,7 +37,7 @@ export default {
                 console.error(error);
             }
         },
-        // salvataggio nell'array
+        // toggle del filtro e salvataggio in un array
         toggleFilter(service) {
             if (this.selectedFilters.includes(service)) {
                 this.selectedFilters = this.selectedFilters.filter(item => item !== service);
@@ -142,18 +142,5 @@ export default {
 
 .activeFilter {
     color: $color-light-green;
-}
-
-.icon-list::-webkit-scrollbar {
-    height: 8px;
-}
-
-.icon-list::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
-    border-radius: 4px;
-}
-
-.icon-list::-webkit-scrollbar-track {
-    background: #f1f1f1;
 }
 </style>
