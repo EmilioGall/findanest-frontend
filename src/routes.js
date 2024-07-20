@@ -18,15 +18,13 @@ const routes = [
     name: "Contatti",
     component: HomePage,
   },
-];
-const singlePage = [
+  
   {
-    path : "/singlepage",
-    name : "singlepage",
-    component : SinglePage
-  }
-
-]
+    path: "/singlepage/:slug",
+    name: "singlepage",
+    component: SinglePage,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),

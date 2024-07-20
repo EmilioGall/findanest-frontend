@@ -1,22 +1,6 @@
-<script>
-export default {
-    props: {
-        house: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {
-             imageBaseUrl: 'http://127.0.0.1:8000/storage'
-        }
-    },
-}
-</script>
-
 <template>
     <!-- colonna della card -->
-    <div class="col" >
+    <div class="col" @click="navigateToSinglePage">
         <div class="card border-0 rounded-0">
             <img 
             :src="house.image
@@ -45,6 +29,27 @@ export default {
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: {
+        house: {
+            type: Object,
+            required: true
+        }
+    },
+    data() {
+        return {
+             imageBaseUrl: 'http://127.0.0.1:8000/storage'
+        }
+    },
+    methods: {
+        navigateToSinglePage() {
+            this.$emit('houseSelected', this.house.slug);
+        }
+    }
+}
+</script>
 
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
