@@ -44,7 +44,7 @@ export default {
           <!-- fine link inseriti dinamicamente -->
 
           <!-- link per il backend -->
-          <li class="d-flex backend-links">
+          <li class="d-flex backend-links ms-2">
             <a href="http://127.0.0.1:8000" class="nav-link text-light publish-link">Pubblica il tuo annuncio</a>
           </li>
           <li>
@@ -68,7 +68,7 @@ export default {
 @use "../scss/partials/variables" as *;
 
 nav {
-  background-color: rgba(0, 0, 0, 0.8); 
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .backend-links {
@@ -81,18 +81,22 @@ nav {
   margin: 2px;
   color: white;
 }
+
 .publish-home:hover {
   background-color: $color-light-green;
   color: black;
 }
+
 .publish-link {
   position: relative;
   color: white;
   text-decoration: none;
 }
+
 .publish-link:hover {
   color: $color-light-green;
 }
+
 .publish-link::after {
   content: "";
   position: absolute;
@@ -105,6 +109,7 @@ nav {
   transition: width 0.3s ease;
   -webkit-transition: width 0.3s ease;
 }
+
 .publish-link:hover::after {
   width: 93%;
   left: 10px;
@@ -127,5 +132,4 @@ nav {
   line-height: 0.3;
   background: #fff;
 }
-
 </style>

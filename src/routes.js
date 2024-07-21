@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomePage.vue";
 import SinglePage from "./pages/SinglePage.vue";
+import AboutUsPage from "./pages/AboutUsPage.vue";
 
 const links = [
   {
@@ -14,9 +15,9 @@ const links = [
     component: HomePage,
   },
   {
-    path: "/contatti",
-    name: "Contatti",
-    component: HomePage,
+    path: "/chi-siamo",
+    name: "Chi Siamo",
+    component: AboutUsPage,
   },
 ];
 
