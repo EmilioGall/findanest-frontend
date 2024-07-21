@@ -1,11 +1,16 @@
 <script>
 import axios from 'axios';
+import AppContactForm from '../components/AppContactForm.vue';
 
 export default {
+	components: {
+		AppContactForm
+	},
+
 	data() {
 		return {
 			// variabile house inizializzata nulla
-			house: null, 
+			house: null,
 			// link per le immagini
 			imageBaseUrl: 'http://127.0.0.1:8000/storage'
 		}
@@ -15,6 +20,7 @@ export default {
 		axios.get(`http://127.0.0.1:8000/api/houses/${slug}`)
 			.then((resp) => {
 				this.house = resp.data.result;  // assegna ad house i risultati
+
 				console.log(resp);
 			})
 			.catch(error => {
@@ -37,12 +43,10 @@ export default {
 			<div class="row py-3 align-items-center">
 				<div class="col-md-6 mt-md-0 mt-4">
 					<div class="mb-5 mb-lg-3">
-						<img 
-            :src="house.image
-            ? `${imageBaseUrl}/${house.image}`
-            :`https://placehold.co/500x300?text=immagine+non+disponibile`" 
-            class="card-img-top rounded-0" 
-            :alt="house.title">
+						<img :src="house.image
+							? `${imageBaseUrl}/${house.image}`
+							: `https://placehold.co/500x300?text=immagine+non+disponibile`" class="card-img-top rounded-0"
+							:alt="house.title">
 					</div>
 				</div>
 				<div class="col-md-6 ps-md-5">
@@ -65,6 +69,10 @@ export default {
 			<p>Loading...</p>
 		</div>
 	</section>
+
+	<!-- <AppContactForm :houseObj="{ title: house.title, id: house.id }" /> -->
+	<AppContactForm />
+
 </template>
 
 <style scoped lang="scss"></style>
