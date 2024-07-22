@@ -6,11 +6,19 @@ export default {
             required: true
         }
     },
+    
     data() {
         return {
-             imageBaseUrl: 'http://127.0.0.1:8000/storage'
+            imageBaseUrl: 'http://127.0.0.1:8000/storage'
         }
     },
+
+    created() {
+
+        console.error('house img', this.house.image);
+
+    },
+
     methods: {
         navigateToSinglePage() {
             this.$emit('houseSelected', this.house.slug);
@@ -21,15 +29,16 @@ export default {
 
 
 <template>
+
     <!-- colonna della card -->
     <div class="col" @click="navigateToSinglePage">
+
         <div class="card border-0 rounded-0">
-            <img 
-            :src="house.image
-            ? `${imageBaseUrl}/${house.image}`
-            :`https://placehold.co/500x300?text=immagine+non+disponibile`" 
-            class="card-img-top rounded-0" 
-            :alt="house.title">
+
+            <img :src="house.image.substring(0, 8) == 'https://'
+                ? house.image : `${imageBaseUrl}/${house.image}`" class="card-img-top rounded-0"
+                :alt="house.title">
+
             <!-- corpo della card -->
             <div class="card-body">
                 <!-- testo della card -->
@@ -39,7 +48,8 @@ export default {
                 <!-- caratteristice della card -->
                 <div class="d-flex justify-content-center mt-3">
                     <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> {{ house.beds }} letti</p>
-                    <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> {{ house.sqm }} mq</p>
+                    <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> {{ house.sqm }} mq
+                    </p>
                 </div>
 
                 <!-- bottone della card -->
@@ -57,10 +67,17 @@ export default {
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
 
+.card {
+    img {
+        max-height: 200px;
+    }
+}
+
 button {
     border: 3px solid $color-light-green;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
+
 button:hover {
     background-color: $color-light-green;
     transform: scale(1.1);
