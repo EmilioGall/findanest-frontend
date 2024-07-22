@@ -71,7 +71,8 @@ export default {
 					<div class="mb-5 mb-lg-3">
 						<img :src="house.image
 							? `${imageBaseUrl}/${house.image}`
-							: `https://placehold.co/500x300?text=immagine+non+disponibile`" class="card-img-top rounded-0" :alt="house.title">
+							: `https://placehold.co/500x300?text=immagine+non+disponibile`" class="card-img-top rounded-0"
+							:alt="house.title">
 					</div>
 				</div>
 				<div class="col-md-6 ps-md-5">
@@ -99,7 +100,8 @@ export default {
 			<p>Loading...</p>
 		</div>
 	</section>
-	<AppContactForm :houseObj="house" />
+	<!-- <AppContactForm :houseObj="house" /> -->
+	<AppContactForm />
 </template>
 
 <style scoped>
