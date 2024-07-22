@@ -70,6 +70,8 @@ export default {
 		</div>
 	</section>
 
+	
+
 	<!-- <AppContactForm :houseObj="{ title: house.title, id: house.id }" /> -->
 	<AppContactForm />
 

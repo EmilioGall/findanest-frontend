@@ -18,9 +18,9 @@ export default {
         axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
             this.homes = resp.data.result;
             this.sponsoredHomes = this.homes.filter(house => house.sponsored === 1);
-            this.homes = this.homes.filter(house => house.sponsored !== 1);
-            console.log('Sponsored Homes:', this.sponsoredHomes);
-            console.log('Homes:', this.homes);
+            this.homes = this.homes.filter(house => house.sponsored !== 1);  //quando avremo la tabella ponte modifica
+            // console.log('Sponsored Homes:', this.sponsoredHomes);
+            // console.log('Homes:', this.homes);
         }).catch(error => {
             console.error('Errore nella richiesta:', error);
         });
@@ -29,7 +29,9 @@ export default {
         navigateToSinglePage(slug) {
             this.$router.push({ name: 'singlepage', params: { slug } });
         }
+        
     }
+    
 }
 </script>
 <template>
