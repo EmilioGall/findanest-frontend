@@ -15,7 +15,7 @@ export default {
                 phone_number: "",
                 email: "",
                 message: "",
-                house_id: 3
+                house_id: this.houseObj.id
             },
             loading: false,
             success: false,
@@ -23,37 +23,42 @@ export default {
         };
     },
     methods: {
-        async submitForm() {
+        submitForm() {
             this.loading = true;
             this.success = false;
             this.errors = {};
 
-            try {
-                const response = await axios.post('http://127.0.0.1:8000/api/leads', {
-                    ...this.formData,
-                    house_id: this.houseObj.id || 3
+            axios.post('http://127.0.0.1:8000/api/leads', this.formData)
+                .then(response => {
+                    if (response.data.success) {
+                        this.success = true;
+                        this.clearFields();
+                    }
+                })
+                .catch(error => {
+                    if (error.response && error.response.data.errors) {
+                        this.errors = error.response.data.errors;
+                    } else {
+                        this.errors.general = 'Si è verificato un errore. Riprova più tardi.';
+                        console.error('Errore nel submitForm:', error.response ? error.response.data : error);
+                    }
+                })
+                .finally(() => {
+                    this.loading = false;
                 });
-                this.loading = false;
-                this.success = true;
-                this.formData = {
-                    name: "",
-                    phone_number: "",
-                    email: "",
-                    message: "",
-                    house_id: this.houseObj.id
-                };
-            } catch (error) {
-                this.loading = false;
-                if (error.response && error.response.data.errors) {
-                    this.errors = error.response.data.errors;
-                } else {
-                    this.errors.general = 'Si è verificato un errore. Riprova più tardi.';
-                    console.error('Errore nel submitForm:', error.response ? error.response.data : error);
-                }
-            }
+        },
+        clearFields() {
+            this.formData = {
+                name: "",
+                phone_number: "",
+                email: "",
+                message: "",
+                house_id: this.houseObj.id
+            };
         }
-
     }
+
+
 }
 </script>
 
