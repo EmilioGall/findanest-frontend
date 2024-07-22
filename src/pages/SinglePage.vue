@@ -15,11 +15,15 @@ export default {
 	},
 	created() {
 		const slug = this.$route.params.slug;
+		// chiamata axios al backend con parametro slug
 		axios.get(`http://127.0.0.1:8000/api/houses/${slug}`)
 			.then((resp) => {
 				this.house = resp.data.result;
 				console.log(resp);
+
+				// $nextTick serve ad assicurarci che il Dom sia del tutto carico, altrimenti da errore nel riconoscer il container map
 				this.$nextTick(() => {
+					// funzione di TomTom che viene chiamata una volta caricato tutto il dom
 					this.initMap();
 				});
 			})
@@ -28,18 +32,24 @@ export default {
 			});
 	},
 	methods: {
+
+		// Funzione di TomTom
 		initMap() {
+			// Verifica lesistenza della chiave nella API, se non esiste usa le coordinate di default (New York)
 			const longitude = this.house ? this.house.longitude : -74.0060;
 			const latitude = this.house ? this.house.latitude : 40.7128;
 
+			// Funzione di TomTOM
 			const map = tt.map({
-				key: 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0',
-				container: this.$refs.map,
-				center: [longitude, latitude],
+				key: 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0',	//hiave
+				container: this.$refs.map,					//il contenitore che mostrerà la mappa. ref perche è reattiva
+				center: [longitude, latitude],				//le coordinate (variabili definite prima). 
 				zoom: 15
 			});
+			// comandi di zoom
 			map.addControl(new tt.FullscreenControl());
 			map.addControl(new tt.NavigationControl());
+			// marker
 			new tt.Marker().setLngLat([longitude, latitude]).addTo(map);
 		}
 	}
@@ -78,6 +88,7 @@ export default {
 					</div>
 				</div>
 			</div>
+			<!-- mappa -->
 			<div class="row py-3 align-items-center">
 				<div class="col-12">
 					<div ref="map" class="map"></div>
