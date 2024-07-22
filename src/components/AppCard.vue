@@ -55,7 +55,7 @@ export default {
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
                     <button class="btn btn-lg px-4 rounded custom-color">Prenota ora</button>
-                    <h5 class="my-auto ms-auto">€ {{ house.price }}</h5>
+                    <h5 class="my-auto ms-auto">{{ house.price.replace(".", ",") }} €/notte</h5>
                 </div>
             </div>
         </div>
