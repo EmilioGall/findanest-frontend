@@ -57,6 +57,7 @@ export default {
 }
 </script>
 
+
 <template>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-8">
