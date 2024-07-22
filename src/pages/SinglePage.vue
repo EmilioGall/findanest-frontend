@@ -38,7 +38,8 @@ export default {
 		center: [longitude, latitude],
 		zoom: 15
 	  });
-	  
+	  map.addControl(new tt.FullscreenControl());
+map.addControl(new tt.NavigationControl());
 	  new tt.Marker().setLngLat([longitude, latitude]).addTo(map);
 	}
   }
