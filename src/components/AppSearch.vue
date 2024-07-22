@@ -27,22 +27,45 @@ export default {
     methods: {
         async handleSearch() {
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/search`, {
-                    //da aggiungere l'array di filtri
+                const response = await axios.get('http://127.0.0.1:8000/search', {
                     params: { query: this.searchTerm },
                 });
                 this.results = response.data;
-                //errori
             } catch (error) {
                 console.error(error);
             }
         },
-        // toggle del filtro e salvataggio in un array
         toggleFilter(service) {
             if (this.selectedFilters.includes(service)) {
                 this.selectedFilters = this.selectedFilters.filter(item => item !== service);
             } else {
                 this.selectedFilters.push(service);
+            }
+        },
+        searchAutocomplete() {
+            const apiKey = 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0';
+            const suggestionsList = document.getElementById('suggestions-list');
+            const query = this.searchTerm;
+
+            if (query.length > 2) {
+                fetch(`https://api.tomtom.com/search/2/search/${encodeURIComponent(query)}.json?key=${apiKey}&limit=5&language=it-IT`)
+                    .then(response => response.json())
+                    .then(data => {
+                        suggestionsList.innerHTML = '';
+                        const suggestions = data.results;
+                        suggestions.forEach(suggestion => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = suggestion.address.freeformAddress;
+                            listItem.classList.add('list-group-item');
+                            listItem.addEventListener('click', () => {
+                                this.searchTerm = suggestion.address.freeformAddress;
+                                suggestionsList.innerHTML = '';
+                            });
+                            suggestionsList.appendChild(listItem);
+                        });
+                    })
+            } else {
+                suggestionsList.innerHTML = '';
             }
         }
     }
@@ -54,14 +77,18 @@ export default {
         <div class="input-group">
             <form @submit.prevent="handleSearch" class="search-form">
                 <input class="form-control-sm search-input" type="text" v-model="searchTerm"
-                    placeholder="Cerca le case (eg. Titolo, Città)..." />
+                    placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
                 <button class="search-btn btn ms-2" type="submit">Cerca</button>
             </form>
-            <ul>
+
+            <!-- Debug for results -->
+            <!-- <ul>
                 <li v-for="house in results" :key="house.id">
                     {{ house.title }} - {{ house.address }}
                 </li>
-            </ul>
+            </ul> -->
+
+            <div id="suggestions-list" class="list-group mt-2"></div>
 
             <div class="mt-3">
                 <div class="icon-list text-light">
@@ -120,7 +147,7 @@ export default {
     align-items: center;
     justify-content: center;
     margin-right: 0.5rem;
-    
+
     text-align: center;
     cursor: pointer;
     transition: color 0.3s;
