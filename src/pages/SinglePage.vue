@@ -88,7 +88,7 @@ export default {
 			<p>Loading...</p>
 		</div>
 	</section>
-	<AppContactForm />
+	<AppContactForm :houseObj="house" />
 </template>
 
 <style scoped>
