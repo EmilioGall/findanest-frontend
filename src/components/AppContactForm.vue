@@ -56,7 +56,7 @@ export default {
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6 p-3">
+                            <div class="col-12 col-md-6 p-3">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nome</label>
                                     <input type="text" class="form-control input-border" id="name"
@@ -68,7 +68,7 @@ export default {
                                         aria-describedby="emailHelp" v-model="formData.email">
                                 </div>
                             </div>
-                            <div class="col-6 p-3">
+                            <div class="col-12 col-md-6 p-3">
                                 <div class="mb-3">
                                     <label for="phone_number" class="form-label">Telefono</label>
                                     <input type="text" class="form-control input-border" id="phone_number"
@@ -80,7 +80,6 @@ export default {
                                     <p class="mt-2 text-secondary form-control bg-light">{{ houseObj.title }}</p>
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-12 pb-3 px-3">
@@ -92,9 +91,10 @@ export default {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-column flex-md-row justify-content-between">
                             <!-- Send btn -->
-                            <button v-if="!loading" @click.prevent="submitForm" type="submit" class="btn btn-custom">
+                            <button v-if="!loading" @click.prevent="submitForm" type="submit"
+                                class="btn btn-custom mb-3 mb-md-0">
                                 <i class="fa-solid fa-paper-plane fa-beat-fade"></i><span class="ms-2">Invia</span>
                             </button>
                             <!-- Loading btn -->
@@ -110,8 +110,6 @@ export default {
             </form>
         </div>
     </div>
-
-
 </template>
 
 <style scoped lang="scss">
