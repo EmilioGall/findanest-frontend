@@ -15,7 +15,7 @@ export default {
                 phone_number: "",
                 email: "",
                 message: "",
-                house_id: this.houseObj.id
+                house_id: 3
             },
             loading: false,
             success: false,
@@ -23,55 +23,36 @@ export default {
         };
     },
     methods: {
-        validateForm() {
+        async submitForm() {
+            this.loading = true;
+            this.success = false;
             this.errors = {};
 
-            // Validate name
-            if (this.formData.name && (this.formData.name.length < 3 || this.formData.name.length > 255)) {
-                this.errors.name = 'Il nome deve essere compreso tra 3 e 255 caratteri.';
-            }
-
-            // Validate phone number
-            if (this.formData.phone_number && (!/^[30]/.test(this.formData.phone_number) || this.formData.phone_number.length > 11)) {
-                this.errors.phone_number = 'Inserisci un numero di telefono valido.';
-            }
-
-            // Validate email
-            if (!this.formData.email) {
-                this.errors.email = "L'indirizzo email è obbligatorio.";
-            }
-
-            // Validate message
-            if (!this.formData.message) {
-                this.errors.message = 'Il messaggio è obbligatorio.';
-            } else if (this.formData.message.length > 1000) {
-                this.errors.message = 'Il messaggio deve avere un massimo di 1000 caratteri.';
-            }
-
-            return Object.keys(this.errors).length === 0;
-        },
-        submitForm() {
-            if (!this.validateForm()) {
-                return;
-            }
-
-            this.loading = true;
-
-            axios.post('http://127.0.0.1:8000/api/leads', {
-                ...this.formData,
-                house_id: this.houseObj.id
-            })
-                .then((resp) => {
-                    this.loading = false;
-                    if (resp.data.success) {
-                        this.success = true;
-                        this.formData.name = "";
-                        this.formData.phone_number = "";
-                        this.formData.email = "";
-                        this.formData.message = "";
-                    }
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/leads', {
+                    ...this.formData,
+                    house_id: this.houseObj.id || 3
                 });
-        },
+                this.loading = false;
+                this.success = true;
+                this.formData = {
+                    name: "",
+                    phone_number: "",
+                    email: "",
+                    message: "",
+                    house_id: this.houseObj.id
+                };
+            } catch (error) {
+                this.loading = false;
+                if (error.response && error.response.data.errors) {
+                    this.errors = error.response.data.errors;
+                } else {
+                    this.errors.general = 'Si è verificato un errore. Riprova più tardi.';
+                    console.error('Errore nel submitForm:', error.response ? error.response.data : error);
+                }
+            }
+        }
+
     }
 }
 </script>
@@ -80,7 +61,7 @@ export default {
     <div class="container d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-8">
             <h5 class="text-center my-4">Vuoi maggiori informazioni?</h5>
-            <form>
+            <form @submit.prevent="submitForm">
                 <div class="card card-border">
                     <!-- Success message -->
                     <div v-if="success" class="success-overlay d-flex flex-column">
@@ -95,13 +76,13 @@ export default {
                                     <label for="name" class="form-label">Nome</label>
                                     <input type="text" class="form-control input-border" id="name"
                                         aria-describedby="nameHelp" v-model="formData.name">
-                                    <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
+                                    <div v-if="errors.name" class="text-danger">{{ errors.name[0] }}</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Indirizzo E-Mail *</label>
                                     <input type="email" class="form-control input-border" id="email"
                                         aria-describedby="emailHelp" v-model="formData.email">
-                                    <div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
+                                    <div v-if="errors.email" class="text-danger">{{ errors.email[0] }}</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 p-3">
@@ -109,7 +90,8 @@ export default {
                                     <label for="phone_number" class="form-label">Telefono</label>
                                     <input type="text" class="form-control input-border" id="phone_number"
                                         aria-describedby="phoneHelp" v-model="formData.phone_number">
-                                    <div v-if="errors.phone_number" class="text-danger">{{ errors.phone_number }}</div>
+                                    <div v-if="errors.phone_number" class="text-danger">{{ errors.phone_number[0] }}
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <span class="text-secondary form-label">Stai richiedendo informazioni
@@ -125,24 +107,24 @@ export default {
                                     <textarea class="form-control input-border" id="message"
                                         v-model="formData.message"></textarea>
                                     <div id="messageHelp" class="form-text">Scrivi qui la tua richiesta.</div>
-                                    <div v-if="errors.message" class="text-danger">{{ errors.message }}</div>
+                                    <div v-if="errors.message" class="text-danger">{{ errors.message[0] }}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-column flex-md-row justify-content-between">
                             <!-- Send btn -->
-                            <button v-if="!loading" @click.prevent="submitForm" type="submit"
-                                class="btn btn-custom mb-3 mb-md-0">
+                            <button v-if="!loading" type="submit" class="btn btn-custom mb-3 mb-md-0">
                                 <i class="fa-solid fa-paper-plane fa-beat-fade"></i><span class="ms-2">Invia</span>
                             </button>
                             <!-- Loading btn -->
-                            <button v-if="loading" class="btn btn-custom" type="button">
+                            <button v-if="loading" class="btn btn-custom" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                                 <span class="ms-2" role="status">Invio del messaggio in corso...</span>
                             </button>
                             <small class="align-self-end text-secondary">I campi contrassegnati con * sono
                                 obbligatori.</small>
                         </div>
+                        <div v-if="errors.general" class="text-danger">{{ errors.general }}</div>
                     </div>
                 </div>
             </form>
