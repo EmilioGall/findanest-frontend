@@ -23,36 +23,41 @@ export default {
         };
     },
     methods: {
-        async submitForm() {
+        submitForm() {
             this.loading = true;
             this.success = false;
             this.errors = {};
 
-
-            try {
-                console.log('Dati inviati:', this.formData);
-
-                const response = await axios.post('http://127.0.0.1:8000/api/leads', this.formData);
-                this.loading = false;
-                this.success = true;
-                this.formData = {
-                    name: "",
-                    phone_number: "",
-                    email: "",
-                    message: "",
-                    house_id: this.houseObj.id
-                };
-            } catch (error) {
-                this.loading = false;
-                if (error.response && error.response.data.errors) {
-                    this.errors = error.response.data.errors;
-                } else {
-                    this.errors.general = 'Si è verificato un errore. Riprova più tardi.';
-                    console.error('Errore nel submitForm:', error.response ? error.response.data : error);
-                }
-            }
+            axios.post('http://127.0.0.1:8000/api/leads', this.formData)
+                .then(response => {
+                    if (response.data.success) {
+                        this.success = true;
+                        this.clearFields();
+                    }
+                })
+                .catch(error => {
+                    if (error.response && error.response.data.errors) {
+                        this.errors = error.response.data.errors;
+                    } else {
+                        this.errors.general = 'Si è verificato un errore. Riprova più tardi.';
+                        console.error('Errore nel submitForm:', error.response ? error.response.data : error);
+                    }
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        },
+        clearFields() {
+            this.formData = {
+                name: "",
+                phone_number: "",
+                email: "",
+                message: "",
+                house_id: this.houseObj.id
+            };
         }
     }
+
 
 }
 </script>
