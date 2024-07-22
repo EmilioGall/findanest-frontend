@@ -19,11 +19,42 @@ export default {
             },
             loading: false,
             success: false,
+            errors: {},
         };
     },
     methods: {
+        validateForm() {
+            this.errors = {};
+
+            // Validate name
+            if (this.formData.name && (this.formData.name.length < 3 || this.formData.name.length > 255)) {
+                this.errors.name = 'Il nome deve essere compreso tra 3 e 255 caratteri.';
+            }
+
+            // Validate phone number
+            if (this.formData.phone_number && (!/^[30]/.test(this.formData.phone_number) || this.formData.phone_number.length > 11)) {
+                this.errors.phone_number = 'Inserisci un numero di telefono valido.';
+            }
+
+            // Validate email
+            if (!this.formData.email) {
+                this.errors.email = "L'indirizzo email è obbligatorio.";
+            }
+
+            // Validate message
+            if (!this.formData.message) {
+                this.errors.message = 'Il messaggio è obbligatorio.';
+            } else if (this.formData.message.length > 1000) {
+                this.errors.message = 'Il messaggio deve avere un massimo di 1000 caratteri.';
+            }
+
+            return Object.keys(this.errors).length === 0;
+        },
         submitForm() {
-            // console.log('prova invio');
+            if (!this.validateForm()) {
+                return;
+            }
+
             this.loading = true;
 
             axios.post('http://127.0.0.1:8000/api/leads', {
@@ -31,12 +62,15 @@ export default {
                 house_id: this.houseObj.id
             })
                 .then((resp) => {
-                    // console.log(resp);
                     this.loading = false;
                     if (resp.data.success) {
                         this.success = true;
+                        this.formData.name = "";
+                        this.formData.phone_number = "";
+                        this.formData.email = "";
+                        this.formData.message = "";
                     }
-                })
+                });
         },
     }
 }
@@ -61,11 +95,13 @@ export default {
                                     <label for="name" class="form-label">Nome</label>
                                     <input type="text" class="form-control input-border" id="name"
                                         aria-describedby="nameHelp" v-model="formData.name">
+                                    <div v-if="errors.name" class="text-danger">{{ errors.name }}</div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Indirizzo E-Mail *</label>
                                     <input type="email" class="form-control input-border" id="email"
                                         aria-describedby="emailHelp" v-model="formData.email">
+                                    <div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 p-3">
@@ -73,6 +109,7 @@ export default {
                                     <label for="phone_number" class="form-label">Telefono</label>
                                     <input type="text" class="form-control input-border" id="phone_number"
                                         aria-describedby="phoneHelp" v-model="formData.phone_number">
+                                    <div v-if="errors.phone_number" class="text-danger">{{ errors.phone_number }}</div>
                                 </div>
                                 <div class="mb-3">
                                     <span class="text-secondary form-label">Stai richiedendo informazioni
@@ -87,7 +124,8 @@ export default {
                                     <label for="message" class="form-label">Messaggio *</label>
                                     <textarea class="form-control input-border" id="message"
                                         v-model="formData.message"></textarea>
-                                    <div id="messageHelp" class="form-text ">Scrivi qui la tua richiesta.</div>
+                                    <div id="messageHelp" class="form-text">Scrivi qui la tua richiesta.</div>
+                                    <div v-if="errors.message" class="text-danger">{{ errors.message }}</div>
                                 </div>
                             </div>
                         </div>
@@ -145,5 +183,11 @@ export default {
 .success-message {
     font-size: 1.25rem;
     text-align: center;
+}
+
+.text-danger {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: bold;
 }
 </style>
