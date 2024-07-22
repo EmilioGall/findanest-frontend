@@ -1,9 +1,11 @@
 <script>
+import axios from 'axios';
+import { store } from '../store';
+
 export default {
     data() {
         return {
-            searchTerm: "",
-            results: [],
+            store,
         }
     },
 
@@ -12,9 +14,13 @@ export default {
         async handleSearch() {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/search', {
-                    params: { query: this.searchTerm },
+                    params: { query: this.store.searchTerm },
                 });
-                this.results = response.data;
+                this.store.results = response.data;
+                console.log(this.store.searchTerm);
+
+                this.$router.push("/ricerca")
+
             } catch (error) {
                 console.error(error);
             }
@@ -23,7 +29,7 @@ export default {
         searchAutocomplete() {
             const apiKey = 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0';
             const suggestionsList = document.getElementById('suggestions-list');
-            const query = this.searchTerm;
+            const query = this.store.searchTerm;
 
             if (query.length > 2) {
                 fetch(`https://api.tomtom.com/search/2/search/${encodeURIComponent(query)}.json?key=${apiKey}&limit=5&language=it-IT`)
@@ -36,7 +42,7 @@ export default {
                             listItem.textContent = suggestion.address.freeformAddress;
                             listItem.classList.add('list-group-item');
                             listItem.addEventListener('click', () => {
-                                this.searchTerm = suggestion.address.freeformAddress;
+                                this.store.searchTerm = suggestion.address.freeformAddress;
                                 suggestionsList.innerHTML = '';
                             });
                             suggestionsList.appendChild(listItem);
@@ -45,7 +51,8 @@ export default {
             } else {
                 suggestionsList.innerHTML = '';
             }
-        }
+        },
+
     }
 }
 </script>
@@ -54,7 +61,7 @@ export default {
 
     <!-- SEARCHBAR -->
     <form @submit.prevent="handleSearch" class="search-form">
-        <input class="form-control-sm search-input" type="text" v-model="searchTerm"
+        <input class="form-control-sm search-input" type="text" v-model="store.searchTerm"
             placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
         <button class="search-btn btn ms-2" type="submit">Cerca</button>
     </form>
@@ -65,9 +72,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 @use "../scss/partials/variables" as *;
-
 
 .search-form {
     display: flex;
@@ -86,5 +91,4 @@ export default {
     height: 48px;
     margin-top: -2px;
 }
-
 </style>
