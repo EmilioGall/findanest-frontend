@@ -15,7 +15,7 @@ export default {
                 phone_number: "",
                 email: "",
                 message: "",
-                house_id: 3
+                house_id: this.houseObj.id
             },
             loading: false,
             success: false,
@@ -28,11 +28,11 @@ export default {
             this.success = false;
             this.errors = {};
 
+
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/leads', {
-                    ...this.formData,
-                    house_id: this.houseObj.id || 3
-                });
+                console.log('Dati inviati:', this.formData);
+
+                const response = await axios.post('http://127.0.0.1:8000/api/leads', this.formData);
                 this.loading = false;
                 this.success = true;
                 this.formData = {
@@ -52,8 +52,8 @@ export default {
                 }
             }
         }
-
     }
+
 }
 </script>
 
