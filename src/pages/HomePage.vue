@@ -19,7 +19,9 @@ export default {
 <template>
 
     <AppJumbotron class="jumbo"/>
+
     <AppSearch/>
+    
     <AppMain />
 
 </template>
