@@ -50,7 +50,7 @@ export default {
 
             <h2>I nostri Alloggi più Popolari</h2>
 
-            <h6 class="ms-auto">Scopri <span class="arrow-icon">&rarr;</span></h6>
+            <!-- <h6 class="ms-auto">Scopri <span class="arrow-icon">&rarr;</span></h6> -->
 
         </div>
         <!-- fine titolo e descrizione -->

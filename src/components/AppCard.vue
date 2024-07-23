@@ -31,7 +31,7 @@ export default {
 <template>
 
     <!-- colonna della card -->
-    <div class="col" @click="navigateToSinglePage">
+    <div class="col h-100" @click="navigateToSinglePage">
 
         <div class="card border-0 rounded-0">
 
@@ -55,7 +55,7 @@ export default {
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
                     <button class="btn btn-lg px-4 rounded custom-color">Prenota ora</button>
-                    <h5 class="my-auto ms-auto">{{ house.price.replace(".", ",") }} €/notte</h5>
+                    <h5 class="my-auto ms-auto">{{ Math.floor(house.price) }} €/notte</h5>
                 </div>
             </div>
         </div>
@@ -68,6 +68,7 @@ export default {
 @use "../scss/partials/variables" as *;
 
 .card {
+
     img {
         max-height: 200px;
     }
