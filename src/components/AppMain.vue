@@ -117,7 +117,7 @@ export default {
 
                     <h2 style="color: #b5b5b5;">Elon Musk</h2>
 
-                    <p style="color: #b5b5b5;">Fondatore Find-A-Nest</p>
+                    <p style="color: #b5b5b5;">Fondatore Find Nest</p>
 
                 </div>
                 <!-- fine colonna Fondatore -->
@@ -126,9 +126,7 @@ export default {
                 <div class="col-lg-8 mb-5 mt-5">
 
                     <h6 class="lh-lg" style="color: #b5b5b5;">
-                        &ldquo; Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Repudiandae ad, consectetur perspiciatis recusandae quidem iure quia itaque
-                        obcaecati minima error quae quaerat ab atque libero est! Eum temporibus dicta voluptatem?
+                        &ldquo; Benvenuti su Find Nest, il sito numero uno per soggiorni unici. Offriamo una vasta gamma di alloggi selezionati con cura, garantendo comfort, stile e benessere per ogni tipo di viaggiatore. Scopri i vantaggi di prenotare con noi e trasforma il tuo prossimo viaggio in un'esperienza indimenticabile!
                         &rdquo;
                     </h6>
 
