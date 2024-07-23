@@ -1,36 +1,53 @@
 <script>
+import { store } from "../store.js";
+import axios from 'axios';
 
 export default {
 
     data() {
         return {
-            selectedFilters: [],
-            serviziCasa: {
-                "Ascensore": "fas fa-elevator",
-                "Garage": "fas fa-square-parking",
-                "Posto auto": "fas fa-warehouse",
-                "Cantina": "fas fa-cube",
-                "Balcone": "fas fa-window-maximize",
-                "Giardino": "fas fa-tree",
-                "Aria condizionata": "fas fa-snowflake",
-                "Cucina attrezzata": "fas fa-utensils",
-                "Lavanderia": "fas fa-jug-detergent",
-                "Piscina": "fas fa-swimming-pool",
-                "Palestra": "fas fa-dumbbell",
-                "Portineria": "fas fa-door-open",
-                "Videocitofono": "fas fa-video",
-                "Allarme": "fas fa-bell",
-                "Wi-Fi": "fas fa-wifi"
-            },
+
+            store,
+
         }
     },
 
+    created() {
+
+        this.getServices();
+
+    },
+
     methods: {
-        toggleFilter(service) {
-            if (this.selectedFilters.includes(service)) {
-                this.selectedFilters = this.selectedFilters.filter(item => item !== service);
+
+        getServices() {
+
+            axios.get("http://127.0.0.1:8000/api/services").then((resp) => {
+
+                console.log(resp.data);
+
+                this.store.servicesArray = resp.data.result;
+
+                console.log(this.store.servicesArray[0].service_name);
+
+            }).catch(error => {
+
+                console.error('Errore nella richiesta di tutti i servizi:', error);
+
+            });
+
+        },
+
+        toggleFilter(serviceId) {
+
+            if (this.store.selectedFilters.includes(serviceId)) {
+
+                this.store.selectedFilters = this.store.selectedFilters.filter(item => item !== serviceId);
+
             } else {
-                this.selectedFilters.push(service);
+
+                this.store.selectedFilters.push(serviceId);
+
             }
         },
     }
@@ -38,36 +55,35 @@ export default {
 </script>
 
 <template>
-    <div class="icon-list text-light">
-        <div v-for="(iconClass, service) in serviziCasa" :key="service"
-            :class="['icon-item', { activeFilter: selectedFilters.includes(service) }]" @click="toggleFilter(service)">
-            <i :class="iconClass"></i>
-            <span>{{ service }}</span>
+
+    <div class="text-center text-light row g-2" :class="`row-cols-${this.store.servicesArray.length}`">
+
+        <div v-for="service in this.store.servicesArray" :key="service" class="icon-item col"
+            :class="[{ activeFilter: store.selectedFilters.includes(service.id) }]" @click="toggleFilter(service.id)">
+
+            <i class="fs-6" :class="service.icon"></i>
+
+            <span class="icon-text">{{ service.service_name }}</span>
+
         </div>
+
     </div>
+
 </template>
 
 <style lang="scss" scoped>
 @use "../scss/partials/variables" as *;
 
-.icon-list {
-    display: flex;
-    padding: 1rem 0;
-    gap: 0.5rem;
-    margin-left: -10px;
-}
-
 .icon-item {
-    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 0.5rem;
 
-    text-align: center;
     cursor: pointer;
     transition: color 0.3s;
+}
+
+.icon-text {
+    font-size: 5px;
 }
 
 .icon-item:hover {
