@@ -67,7 +67,7 @@ export default {
             <AppSearchBar />
         </div>
 
-        <div class="container pt-5">
+        <div class="container-xxl pt-1 pb-4">
             <AppIconList />
         </div>
 
