@@ -26,6 +26,7 @@ export default {
 
 		const slug = this.$route.params.slug;
 
+
 		// chiamata axios al backend con parametro slug
 		axios.get(`http://127.0.0.1:8000/api/houses/${slug}`)
 			.then((resp) => {
@@ -38,6 +39,7 @@ export default {
 				this.$nextTick(() => {
 					// funzione di TomTom che viene chiamata una volta caricato tutto il dom
 					this.initMap();
+
 				});
 
 			})
@@ -46,6 +48,8 @@ export default {
 				console.error('Errore nella richiesta:', error);
 
 			});
+
+		
 
 	},
 
@@ -62,7 +66,7 @@ export default {
 			// Funzione di TomTOM
 			const map = tt.map({
 
-				key: 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0',	//hiave
+				key: 'oqhAPvi5e4AQAL3zAV2MAL0rP9SlonP0',	//chiave
 				container: this.$refs.map,					//il contenitore che mostrerà la mappa. ref perche è reattiva
 				center: [longitude, latitude],				//le coordinate (variabili definite prima). 
 				zoom: 15
@@ -145,11 +149,11 @@ export default {
 		<!-- House Details Section -->
 
 		<!-- Loading Section -->
-		<div v-else class="text-center">
+		<!-- <div v-if class="text-center">
 
 			<p>Loading...</p>
 
-		</div>
+		</div> -->
 		<!-- Loading Section -->
 
 	</section>
