@@ -24,11 +24,11 @@ export default {
 
             axios.get("http://127.0.0.1:8000/api/services").then((resp) => {
 
-                console.log(resp.data);
+                // console.log(resp.data);
 
                 this.store.servicesArray = resp.data.result;
 
-                console.log(this.store.servicesArray[0].service_name);
+                // console.log(this.store.servicesArray[0].service_name);
 
             }).catch(error => {
 
@@ -40,16 +40,23 @@ export default {
 
         toggleFilter(serviceId) {
 
-            if (this.store.selectedFilters.includes(serviceId)) {
+            if (this.store.selectedServices.includes(serviceId)) {
 
-                this.store.selectedFilters = this.store.selectedFilters.filter(item => item !== serviceId);
+                this.store.selectedServices = this.store.selectedServices.filter(item => item !== serviceId);
 
             } else {
 
-                this.store.selectedFilters.push(serviceId);
+                this.store.selectedServices.push(serviceId);
 
             }
         },
+
+        wordCount(str) {
+
+            return str.split(' ').filter(function (n) { return n != '' }).length;
+
+        },
+
     }
 }
 </script>
@@ -59,11 +66,25 @@ export default {
     <div class="text-center text-light row g-2" :class="`row-cols-${this.store.servicesArray.length}`">
 
         <div v-for="service in this.store.servicesArray" :key="service" class="icon-item col"
-            :class="[{ activeFilter: store.selectedFilters.includes(service.id) }]" @click="toggleFilter(service.id)">
+            :class="[{ activeFilter: store.selectedServices.includes(service.id) }]" @click="toggleFilter(service.id)">
 
-            <i class="fs-6" :class="service.icon"></i>
+            <i class="fs-3" :class="service.icon"></i>
 
-            <span class="icon-text">{{ service.service_name }}</span>
+            <span v-if="wordCount(service.service_name) == 1" :id="`icon-text-${service.id}`" class="icon-text">
+                {{ service.service_name }}
+            </span>
+
+            <div v-else :id="`icon-text-${service.id}`" class="d-flex flex-column align-items-center icon-text">
+
+                <span>
+                    {{ service.service_name.split(" ")[0] }}
+                </span>
+
+                <span>
+                    {{ service.service_name.split(" ")[1] }}
+                </span>
+
+            </div>
 
         </div>
 
@@ -83,7 +104,7 @@ export default {
 }
 
 .icon-text {
-    font-size: 5px;
+    font-size: 0.8rem;
 }
 
 .icon-item:hover {
@@ -92,12 +113,6 @@ export default {
 
 .icon-item i {
     font-size: 2rem;
-}
-
-.icon-item span {
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-    white-space: nowrap;
 }
 
 .activeFilter {

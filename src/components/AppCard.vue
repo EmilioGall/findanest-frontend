@@ -15,7 +15,7 @@ export default {
 
     created() {
 
-        console.error('house img', this.house.image);
+        // console.error('house img', this.house.image);
 
     },
 

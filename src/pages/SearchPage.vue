@@ -43,7 +43,8 @@ export default {
                     params: { query: this.store.searchTerm },
                 });
                 this.store.results = response.data;
-                console.log(this.store.searchTerm);
+
+                // console.log(this.store.searchTerm);
 
                 this.$router.push("/ricerca")
 

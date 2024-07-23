@@ -5,6 +5,6 @@ export const store = reactive({
     searchTerm: "",
     results: [],
     servicesArray: [],
-    selectedFilters: [],
+    selectedServices: [],
     
 })
