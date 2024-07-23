@@ -22,11 +22,41 @@ export default {
             errors: {},
         };
     },
+    computed: {
+        validationErrors() {
+            let errors = {};
+
+            if (this.formData.name && this.formData.name.length < 3) {
+                errors.name = ['Il nome deve essere di almeno 3 caratteri.'];
+            }
+
+            if (!this.formData.email) {
+                errors.email = ['L\'indirizzo email è obbligatorio.'];
+            }
+
+            if (this.formData.phone_number && !/^[30]/.test(this.formData.phone_number)) {
+                errors.phone_number = ['Il numero di telefono deve iniziare con 3 o 0.'];
+            }
+
+            if (!this.formData.message) {
+                errors.message = ['Il messaggio è obbligatorio.'];
+            } else if (this.formData.message.length > 1000) {
+                errors.message = ['Il messaggio non può superare i 1000 caratteri.'];
+            }
+
+            return errors;
+        }
+    },
     methods: {
         submitForm() {
-            this.loading = true;
             this.success = false;
-            this.errors = {};
+            this.errors = this.validationErrors;
+
+            if (Object.keys(this.errors).length > 0) {
+                return;
+            }
+
+            this.loading = true;
 
             axios.post('http://127.0.0.1:8000/api/leads', this.formData)
                 .then(response => {
@@ -57,11 +87,8 @@ export default {
             };
         }
     }
-
-
 }
 </script>
-
 
 <template>
     <div class="container d-flex justify-content-center align-items-center">
@@ -100,8 +127,7 @@ export default {
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <span class="text-secondary form-label">Stai richiedendo informazioni
-                                        per:</span>
+                                    <span class="text-secondary form-label">Stai richiedendo informazioni per:</span>
                                     <p class="mt-2 text-secondary form-control bg-light">{{ houseObj.title }}</p>
                                 </div>
                             </div>
