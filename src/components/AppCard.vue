@@ -33,7 +33,7 @@ export default {
     <!-- colonna della card -->
     <div class="col h-100" @click="navigateToSinglePage">
 
-        <div class="card border-0 rounded-0">
+        <div class="card h-100 border-0 rounded-0">
 
             <img :src="house.image.substring(0, 8) == 'https://'
                 ? house.image : `${imageBaseUrl}/${house.image}`" class="card-img-top rounded-0"
