@@ -17,9 +17,9 @@ export default {
     <div class="container">
 
       <!-- logo -->
-      <a class="navbar-brand" href="#">
+      <router-link class="navbar-brand" :to="{ name: 'Home' }">
         <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="w-50">
-      </a>
+      </router-link>
       <!-- fine logo -->
 
       <!-- button per il responsive -->
