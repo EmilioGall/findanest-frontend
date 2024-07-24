@@ -54,7 +54,7 @@ export default {
 
 <template>
 	<!-- House Details Section -->
-	<div v-if="house" class="container">
+	<div v-if="house" class="container py-4">
 		<div class="row justify-content-center text-center mb-2 mb-lg-4">
 			<div class="col-12 col-lg-8 col-xxl-7 text-center mx-auto">
 				<h2 class="display-5 fw-bold">{{ house.title }}</h2>
@@ -102,8 +102,10 @@ export default {
 	<!-- House Details Section -->
 
 	<!-- Loading Section -->
-	<div v-else class="text-center">
-		<p>Loading...</p>
+	<div v-else class="text-center py-4">
+
+		<p class="fs-2 fw-bold">Loading...</p>
+		
 	</div>
 	<!-- Loading Section -->
 
