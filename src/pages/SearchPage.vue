@@ -38,9 +38,14 @@ export default {
         },
 
         async handleSearch() {
+
+            const allFilters = this.store.formData;
+
             try {
                 const response = await axios.get(`${store.baseURL}/api/search`, {
-                    params: { query: this.store.searchTerm },
+
+                    params: allFilters,
+
                 });
 
                 this.store.results = response.data;
@@ -70,7 +75,7 @@ export default {
                 <AppSearchBar :page="'searchPage'" />
             </div>
 
-            <div class="container-xxl pt-1 pb-4">
+            <div class="container pt-1 pb-4">
                 <AppIconList />
             </div>
 
