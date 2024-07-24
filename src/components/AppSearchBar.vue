@@ -105,13 +105,13 @@ export default {
         <form @submit.prevent="handleSearch" class="row g-4">
 
             <!-- Inputs Filters -->
-            <div v-if="page == 'searchPage'" class="col-12 gap-2 d-flex text-white">
+            <div v-if="page == 'searchPage'" class="col-12 row gap-2 d-flex text-white">
 
                 <!-- Input Numbers -->
-                <div class="row gx-5 gy-1">
+                <div class="col-5 row gx-2 gy-1">
 
                     <!-- Input Rooms -->
-                    <div class="col-6 d-flex gap-2 align-items-end">
+                    <div class="col-3 d-flex gap-2 align-items-end">
 
                         <label for="rooms" class="form-label">Stanze</label>
                         <input type="number" class="form-control input-border" id="rooms" aria-describedby="rooms"
@@ -123,7 +123,7 @@ export default {
                     <!-- /Input Rooms -->
 
                     <!-- Input Bathrooms -->
-                    <div class="col-6 d-flex gap-2 align-items-end">
+                    <div class="col-3 d-flex gap-2 align-items-end">
 
                         <label for="bathrooms" class="form-label">Bagni</label>
                         <input type="number" class="form-control input-border" id="bathrooms"
@@ -135,7 +135,7 @@ export default {
                     <!-- /Input Bathrooms -->
 
                     <!-- Input Beds -->
-                    <div class="col-6 d-flex gap-2 align-items-end">
+                    <div class="col-3 d-flex gap-2 align-items-end">
 
                         <label for="beds" class="form-label">Letti</label>
                         <input type="number" class="form-control input-border" id="beds" aria-describedby="beds"
@@ -147,7 +147,7 @@ export default {
                     <!-- /Input Beds -->
 
                     <!-- Input Sqm -->
-                    <div class="col-6 d-flex gap-2 align-items-end">
+                    <div class="col-3 d-flex gap-2 align-items-end">
 
                         <label for="sqm" class="form-label">m²</label>
                         <input type="number" class="form-control input-border" id="sqm" aria-describedby="sqm"
@@ -162,13 +162,13 @@ export default {
                 <!-- /Input Numbers -->
 
                 <!-- Input Sliders -->
-                <div class="row g-2">
+                <div class="col-7 row g-2">
 
                     <!-- Input Slider Distance -->
-                    <div class="col-12">
+                    <div class="col-6 d-flex flex-column justify-content-end">
 
-                        <label for="distance" class="form-label">Distanza massima da posizione selezionata</label>
-                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="distance"
+                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km` }}</label>
+                        <input type="range" class="form-range" min="0" max="100" step="1" id="distance"
                             v-model="formData.distance">
 
                         <div v-if="errors.distance" class="text-danger">{{ errors.distance[0] }}</div>
@@ -177,10 +177,10 @@ export default {
                     <!-- Input /Slider Distance -->
 
                     <!-- Input Slider Distance -->
-                    <div class="col-12">
+                    <div class="col-6 d-flex flex-column justify-content-end">
 
-                        <label for="price" class="form-label">Prezzo massimo</label>
-                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="price"
+                        <label for="price" class="form-label">{{ `Prezzo massimo: ${formData.price} €/notte` }}</label>
+                        <input type="range" class="form-range" min="0" max="5000" step="1" id="price"
                             v-model="formData.price">
 
                         <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>
