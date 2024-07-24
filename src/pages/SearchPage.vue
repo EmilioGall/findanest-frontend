@@ -61,7 +61,7 @@ export default {
 
 <template>
 
-    <main>
+    <main class="pb-5">
         <!-- Header -->
         <div class="search-header">
 
