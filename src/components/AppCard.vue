@@ -33,7 +33,7 @@ export default {
     <!-- colonna della card -->
     <div class="col h-100" @click="navigateToSinglePage">
 
-        <div class="card h-100 border-0 rounded-0">
+        <div class="card h-100 border-0 rounded-0 card-3d">
 
             <img :src="house.image.substring(0, 8) == 'https://'
                 ? house.image : `${imageBaseUrl}/${house.image}`" class="card-img-top rounded-0"
@@ -54,7 +54,7 @@ export default {
 
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
-                    <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Dettagli</button>
+                    <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Scopri di più</button>
                     <h5 class="my-auto ms-auto">{{ Math.floor(house.price) }} €/notte</h5>
                 </div>
             </div>
@@ -83,4 +83,15 @@ button:hover {
     background-color: $color-light-green;
     transform: scale(1.1);
 }
+
+.card-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card-3d:hover {
+    transform: scale(1.05) translateZ(10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 </style>
