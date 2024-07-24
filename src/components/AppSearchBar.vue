@@ -180,7 +180,7 @@ export default {
                     <div class="col-6 d-flex flex-column justify-content-end">
 
                         <label for="price" class="form-label">{{ `Prezzo massimo: ${formData.price} €/notte` }}</label>
-                        <input type="range" class="form-range" min="0" max="5000" step="1" id="price"
+                        <input type="range" class="form-range" min="0" max="1000" step="10" id="price"
                             v-model="formData.price">
 
                         <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>

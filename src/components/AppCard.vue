@@ -35,8 +35,8 @@ export default {
 
         <div class="card h-100 border-0 rounded-0 card-3d">
 
-            <img :src="house.image.substring(0, 8) == 'https://'
-                ? house.image : `${imageBaseUrl}/${house.image}`" class="card-img-top rounded-0"
+            <img :src="house.image ? (house.image.substring(0, 8) == 'https://'
+                ? house.image : `${imageBaseUrl}/${house.image}`) : 'https://picsum.photos/200/300'" class="card-img-top rounded-0"
                 :alt="house.title">
 
             <!-- corpo della card -->
