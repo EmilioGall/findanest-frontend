@@ -20,7 +20,7 @@ export default {
 
 <template>
     <div class="container">
-        <div class="input-group">
+        <div class="row justify-content-center input-group">
             <AppSearchBar />
         </div>
     </div>

@@ -3,6 +3,13 @@ import axios from 'axios';
 import { store } from '../store';
 
 export default {
+
+    props: {
+
+        page: String,
+
+    },
+
     data() {
         return {
             store,
@@ -16,7 +23,7 @@ export default {
                 services: [],
             },
             errors: {},
-            noResults: false, 
+            noResults: false,
         }
     },
 
@@ -28,7 +35,7 @@ export default {
                 });
 
                 this.store.results = response.data;
-                if(this.store.results.length === 0){
+                if (this.store.results.length === 0) {
                     this.noResults = true;
                 };//Se i risultati sono 0 la variabile diventa true
 
@@ -74,96 +81,102 @@ export default {
 </script>
 
 <template>
-    <!-- SEARCHBAR -->
-    <form @submit.prevent="handleSearch" class="row g-4 text-white">
         <!-- Inputs Filters -->
-        <div class="col-12 gap-2 d-flex">
-            <!-- Input Numbers -->
-            <div class="row gx-5 gy-1">
-                <!-- Input Rooms -->
-                <div class="col-6 d-flex gap-2 align-items-end">
-                    <label for="rooms" class="form-label">Stanze</label>
-                    <input type="number" class="form-control input-border" id="rooms" aria-describedby="rooms"
-                        v-model="formData.rooms">
-                    <div v-if="errors.rooms" class="text-danger">{{ errors.rooms[0] }}</div>
-                </div>
-                <!-- Input Rooms -->
+        <div class="col-12 gap-2">
 
-                <!-- Input Bathrooms -->
-                <div class="col-6 d-flex gap-2 align-items-end">
-                    <label for="bathrooms" class="form-label">Bagni</label>
-                    <input type="number" class="form-control input-border" id="bathrooms" aria-describedby="bathrooms"
-                        v-model="formData.bathrooms">
-                    <div v-if="errors.bathrooms" class="text-danger">{{ errors.bathrooms[0] }}</div>
-                </div>
-                <!-- Input Bathrooms -->
+            <!-- SEARCHBAR -->
+            <form @submit.prevent="handleSearch" class="row g-4">
 
-                <!-- Input Beds -->
-                <div class="col-6 d-flex gap-2 align-items-end">
-                    <label for="beds" class="form-label">Letti</label>
-                    <input type="number" class="form-control input-border" id="beds" aria-describedby="beds"
-                        v-model="formData.beds">
-                    <div v-if="errors.beds" class="text-danger">{{ errors.beds[0] }}</div>
-                </div>
-                <!-- Input Beds -->
+                <!-- Inputs Filters -->
+                <div v-if="page == 'searchPage'" class="col-12 gap-2 d-flex text-white">
 
-                <!-- Input Sqm -->
-                <div class="col-6 d-flex gap-2 align-items-end">
-                    <label for="sqm" class="form-label">m²</label>
-                    <input type="number" class="form-control input-border" id="sqm" aria-describedby="sqm"
-                        v-model="formData.sqm">
-                    <div v-if="errors.sqm" class="text-danger">{{ errors.sqm[0] }}</div>
-                </div>
-                <!-- Input Sqm -->
-            </div>
-            <!-- Input Numbers -->
+                    <!-- Input Numbers -->
+                    <div class="row gx-5 gy-1">
+                        <!-- Input Rooms -->
+                        <div class="col-6 d-flex gap-2 align-items-end">
+                            <label for="rooms" class="form-label">Stanze</label>
+                            <input type="number" class="form-control input-border" id="rooms" aria-describedby="rooms"
+                                v-model="formData.rooms">
+                            <div v-if="errors.rooms" class="text-danger">{{ errors.rooms[0] }}</div>
+                        </div>
+                        <!-- Input /Rooms -->
 
-            <!-- Input Sliders -->
-            <div class="row g-2">
-                <!-- Input Slider Distance -->
+                        <!-- Input Bathrooms -->
+                        <div class="col-6 d-flex gap-2 align-items-end">
+                            <label for="bathrooms" class="form-label">Bagni</label>
+                            <input type="number" class="form-control input-border" id="bathrooms"
+                                aria-describedby="bathrooms" v-model="formData.bathrooms">
+                            <div v-if="errors.bathrooms" class="text-danger">{{ errors.bathrooms[0] }}</div>
+                        </div>
+                        <!-- Input /Bathrooms -->
+
+                        <!-- Input Beds -->
+                        <div class="col-6 d-flex gap-2 align-items-end">
+                            <label for="beds" class="form-label">Letti</label>
+                            <input type="number" class="form-control input-border" id="beds" aria-describedby="beds"
+                                v-model="formData.beds">
+                            <div v-if="errors.beds" class="text-danger">{{ errors.beds[0] }}</div>
+                        </div>
+                        <!-- Input /Beds -->
+
+                        <!-- Input Sqm -->
+                        <div class="col-6 d-flex gap-2 align-items-end">
+                            <label for="sqm" class="form-label">m²</label>
+                            <input type="number" class="form-control input-border" id="sqm" aria-describedby="sqm"
+                                v-model="formData.sqm">
+                            <div v-if="errors.sqm" class="text-danger">{{ errors.sqm[0] }}</div>
+                        </div>
+                        <!-- Input /Sqm -->
+                    </div>
+                    <!-- Input /Numbers -->
+
+                    <!-- Input Sliders -->
+                    <div class="row g-2">
+                        <!-- Input Slider Distance -->
+                        <div class="col-12">
+                            <label for="distance" class="form-label">Distanza massima da posizione selezionata</label>
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" id="distance"
+                                v-model="formData.distance">
+                            <div v-if="errors.distance" class="text-danger">{{ errors.distance[0] }}</div>
+                        </div>
+                        <!-- Input /Slider Distance -->
+
+                        <!-- Input Slider Distance -->
+                        <div class="col-12">
+                            <label for="price" class="form-label">Prezzo massimo</label>
+                            <input type="range" class="form-range" min="0" max="5" step="0.5" id="price"
+                                v-model="formData.price">
+                            <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>
+                        </div>
+                        <!-- /Input Slider Distance -->
+                    </div>
+                    <!-- /Input Sliders -->
+
+                    <div v-if="errors.general" class="text-danger">{{ errors.general }}</div>
+                </div>
+                <!-- /Inputs Filters -->
+
+                <!-- Input Search -->
                 <div class="col-12">
-                    <label for="distance" class="form-label">Distanza massima da posizione selezionata</label>
-                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="distance"
-                        v-model="formData.distance">
-                    <div v-if="errors.distance" class="text-danger">{{ errors.distance[0] }}</div>
+                    <div class="row gap-2 align-items-center">
+                        <input class="col-7 form-control-sm search-input" type="text" v-model="store.searchTerm"
+                            placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
+                        <!-- Submit Button -->
+                        <button class="col-2 search-btn btn ms-2" type="submit">Cerca</button>
+                        <!-- Submit Button -->
+                    </div>
                 </div>
-                <!-- Input Slider Distance -->
+                <!-- /Input Search -->
 
-                <!-- Input Slider Distance -->
-                <div class="col-12">
-                    <label for="price" class="form-label">Prezzo massimo</label>
-                    <input type="range" class="form-range" min="0" max="5" step="0.5" id="price"
-                        v-model="formData.price">
-                    <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>
-                </div>
-                <!-- Input Slider Distance -->
-            </div>
-            <!-- Input Sliders -->
+            </form>
+            <!-- /SEARCHBAR -->
 
-            <div v-if="errors.general" class="text-danger">{{ errors.general }}</div>
+            <!-- LISTA SUGGERIMENTI -->
+            <div id="suggestions-list" class="list-group mt-2"></div>
+
+            <!-- NO RESULTS MESSAGE -->
+            <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
         </div>
-        <!-- Inputs Filters -->
-
-        <!-- Input Search -->
-        <div class="col-12">
-            <div class="row gap-2 align-items-center">
-                <input class="col-7 form-control-sm search-input" type="text" v-model="store.searchTerm"
-                    placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
-                <!-- Submit Button -->
-                <button class="col-2 search-btn btn ms-2" type="submit">Cerca</button>
-                <!-- Submit Button -->
-            </div>
-        </div>
-        <!-- Input Search -->
-    </form>
-    <!-- SEARCHBAR -->
-
-    <!-- LISTA SUGGERIMENTI -->
-    <div id="suggestions-list" class="list-group mt-2"></div>
-
-    <!-- NO RESULTS MESSAGE -->
-    <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
-    
 </template>
 
 <style lang="scss" scoped>

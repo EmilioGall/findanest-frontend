@@ -20,7 +20,7 @@ export default {
 
     <AppJumbotron class="jumbo"/>
 
-    <AppSearch/>
+    <AppSearch />
     
     <AppMain />
 
