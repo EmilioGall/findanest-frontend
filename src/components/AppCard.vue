@@ -54,7 +54,7 @@ export default {
 
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
-                    <button class="btn btn-lg px-4 rounded custom-color">Prenota ora</button>
+                    <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Dettagli</button>
                     <h5 class="my-auto ms-auto">{{ Math.floor(house.price) }} €/notte</h5>
                 </div>
             </div>
