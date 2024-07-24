@@ -61,35 +61,42 @@ export default {
 
 <template>
 
-    <!-- Header -->
-    <div class="search-header">
+    <main>
+        <!-- Header -->
+        <div class="search-header">
 
-        <div class="container pt-5">
-            <AppSearchBar :page="'searchPage'"/>
-        </div>
+            <div class="container pt-5">
+                <AppSearchBar :page="'searchPage'" />
+            </div>
 
-        <div class="container-xxl pt-1 pb-4">
-            <AppIconList />
-        </div>
-
-    </div>
-    <!-- Header -->
-
-    <!-- Houses Cards Grid -->
-    <div class="results container gap-2 mt-5">
-
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
-
-            <AppCard v-for="result in store.results" :key="result.id" :house="result" @houseSelected="navigateToSinglePage"/>
+            <div class="container-xxl pt-1 pb-4">
+                <AppIconList />
+            </div>
 
         </div>
+        <!-- Header -->
 
-    </div>
-    <!-- Houses Cards Grid -->
+        <!-- Houses Cards Grid -->
+        <div class="results container gap-2 mt-5">
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
+
+                <AppCard v-for="result in store.results" :key="result.id" :house="result"
+                    @houseSelected="navigateToSinglePage" />
+
+            </div>
+
+        </div>
+        <!-- Houses Cards Grid -->
+    </main>
+
+
 
 </template>
 
 <style lang="scss" scoped>
+@use "../scss/partials/variables" as *;
+
 
 .search-header {
 
@@ -97,4 +104,7 @@ export default {
 
 }
 
+main {
+    background-color: $color-light-grey;
+}
 </style>
