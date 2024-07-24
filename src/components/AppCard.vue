@@ -68,7 +68,8 @@ export default {
 @use "../scss/partials/variables" as *;
 
 .card {
-
+    cursor: pointer;
+    
     img {
         max-height: 200px;
     }
