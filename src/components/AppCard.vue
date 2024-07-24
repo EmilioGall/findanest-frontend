@@ -54,7 +54,7 @@ export default {
 
                 <!-- bottone della card -->
                 <div class="d-flex my-2">
-                    <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Scopri di più</button>
+                    <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Dettagli</button>
                     <h5 class="my-auto ms-auto">{{ Math.floor(house.price) }} €/notte</h5>
                 </div>
             </div>
@@ -69,7 +69,7 @@ export default {
 
 .card {
     cursor: pointer;
-    
+
     img {
         max-height: 200px;
     }
