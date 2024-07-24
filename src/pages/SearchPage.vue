@@ -39,14 +39,15 @@ export default {
 
         async handleSearch() {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/search', {
+                const response = await axios.get(`${store.baseURL}/api/search`, {
                     params: { query: this.store.searchTerm },
                 });
+
                 this.store.results = response.data;
 
-                // console.log(this.store.searchTerm);
+                // console.log(this.store.results);
 
-                this.$router.push("/ricerca")
+                // console.log(this.store.searchTerm);
 
             } catch (error) {
 
