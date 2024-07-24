@@ -3,6 +3,13 @@ import axios from 'axios';
 import { store } from '../store';
 
 export default {
+
+    props: {
+
+        page: String,
+
+    },
+
     data() {
         return {
 
@@ -96,10 +103,10 @@ export default {
 <template>
 
     <!-- SEARCHBAR -->
-    <form @submit.prevent="handleSearch" class="row g-4 text-white">
+    <form @submit.prevent="handleSearch" class="row g-4">
 
         <!-- Inputs Filters -->
-        <div class="col-12 gap-2 d-flex">
+        <div v-if="page == 'searchPage'" class="col-12 gap-2 d-flex text-white">
 
             <!-- Input Numbers -->
             <div class="row gx-5 gy-1">

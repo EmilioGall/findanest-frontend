@@ -20,7 +20,9 @@ export default {
                     <p>1 / 3</p>
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
                     <br>
-
+                    <p>
+                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
+                    </p>
                 </div>
             </div>
             <div class="carousel-item">

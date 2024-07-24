@@ -65,7 +65,7 @@ export default {
     <div class="search-header">
 
         <div class="container pt-5">
-            <AppSearchBar />
+            <AppSearchBar :page="'searchPage'"/>
         </div>
 
         <div class="container-xxl pt-1 pb-4">
