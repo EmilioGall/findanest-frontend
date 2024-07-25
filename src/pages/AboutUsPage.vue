@@ -12,36 +12,7 @@ export default {
                 <img src="https://placehold.co/500x300?text=immagine+non+disponibile">
             </div>
             <div class="col-8">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, culpa veritatis. Enim id porro illo
-                    corrupti,
-                    aperiam voluptatum voluptas, dolorem culpa eaque est, harum dolore nostrum consequatur reiciendis
-                    nesciunt!
-                    Porro.
-                    Cum minima nostrum ad quod mollitia consequuntur ut. Ad unde ut, quam temporibus ullam quas hic ipsa
-                    illum
-                    mquam! Nobis, perferendis?
-                    Quibusdam
-                    nostrum provident voluptatibus explicabo.
-                    Fugit blanditiis accusamus amet iusto esse fugiat architecto eveniet reprehenderit ex rerum eum
-                    velit
-                    facere,
-                    labore facilis mollitia nostrum nihil ea a totam quibusdam unde adipisci! Vitae similique sed nulla?
-                    Cupiditate, quod doloribus, ratione harum facilis porro corporis assumenda numquam eum voluptatibus
-                    eaque
-                    facere
-                    maiores asperiores consequuntur minus culpa necessitatibus ut atque earum iste. Earum magnam
-                    voluptatem quae
-                    error quos?
-                    Dolorem, facere! Distinctio recusandae dolor voluptatibus deserunt doloribus? Voluptatum unde ipsum
-                    recusandae
-                    aliquid quae fuga sed maiores, minima accusamus pariatur laboriosam expedita hic facilis culpa
-                    nesciunt
-                    quam?
-                    Quibusdam, minima distinctio!
-                    Quam doloribus distinctio esse ducimus a inventore facere aliquid, fugiat velit, quisquam numquam
-                    facilis at
-                    quod odio, sequi architecto tempore similique? Laudantium vitae eius sunt neque sint, iure illum
-                    hic.</p>
+                <p> <strong>FindNest</strong> è la piattaforma innovativa che ti permette di trovare e prenotare la tua casa ideale in qualsiasi parte del mondo. Che tu stia cercando una breve fuga, un soggiorno prolungato o una nuova residenza temporanea, FindNest ti offre una vasta gamma di opzioni per soddisfare tutte le tue esigenze. <br> Con FindNest, prenotare una casa o un appartamento non è mai stato così facile. La nostra piattaforma intuitiva ti consente di esplorare numerose proprietà, visualizzare foto dettagliate, leggere recensioni degli ospiti precedenti e scegliere l'alloggio perfetto per te. Grazie al nostro sistema di pagamento sicuro, puoi effettuare la tua prenotazione con la massima tranquillità. <br> Hai una casa o un appartamento che desideri mettere in affitto? FindNest ti offre l'opportunità di diventare un host e guadagnare un reddito extra. La nostra piattaforma ti guida attraverso ogni passaggio del processo di inserimento, dalla creazione di un annuncio accattivante alla gestione delle prenotazioni. Con FindNest, raggiungere un vasto pubblico di viaggiatori è semplice e immediato. <br><br> Hai domande o bisogno di assistenza? Il nostro team di supporto è sempre pronto ad aiutarti. Contattaci attraverso il nostro servizio clienti 24/7 e ti forniremo tutte le informazioni necessarie per rendere la tua esperienza su FindNest indimenticabile.</p>
             </div>
         </div>
 
