@@ -38,15 +38,21 @@ export default {
         },
 
         async handleSearch() {
+
+            const allFilters = this.store.formData;
+
             try {
-                const response = await axios.get('http://127.0.0.1:8000/search', {
-                    params: { query: this.store.searchTerm },
+                const response = await axios.get(`${store.baseURL}/api/search`, {
+
+                    params: allFilters,
+
                 });
+
                 this.store.results = response.data;
 
-                // console.log(this.store.searchTerm);
+                // console.log(this.store.results);
 
-                this.$router.push("/ricerca")
+                // console.log(this.store.searchTerm);
 
             } catch (error) {
 
@@ -69,7 +75,7 @@ export default {
                 <AppSearchBar :page="'searchPage'" />
             </div>
 
-            <div class="container-xxl pt-1 pb-4">
+            <div class="container pt-1 pb-4">
                 <AppIconList />
             </div>
 
