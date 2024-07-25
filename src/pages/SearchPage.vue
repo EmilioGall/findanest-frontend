@@ -99,7 +99,7 @@ export default {
         <div class="gap-2">
 
             <!-- container delle cards -->
-            <section class="container pt-2" style="margin-top: 10px;">
+            <section v-if="sponsoredHouses.length !== 0" class="container pt-2" style="margin-top: 10px;">
 
                 <!-- titolo e descrizione sezione -->
                 <p class="mt-3">In Evidenza</p>
@@ -129,16 +129,15 @@ export default {
             <!-- fine container delle cards -->
 
             <!-- background grigio e logo -->
-            <section class="bg-dark" style="margin-top: -15%;">
+            <section class="bg-dark" :class=" sponsoredHouses.length !== 0 ? 'dark-long' : '' ">
 
                 <!-- contenitore  -->
-                <div class="container pt-2">
+                <div class="container pt-3">
 
-                    <!-- riga del fondatore e della suo frase -->
-                    <div class="row" style="margin-top: 25%;">
+                    <div class="row" :class=" sponsoredHouses.length !== 0 ? 'grid-down' : '' ">
 
                         <!-- sezione delle card annunci non sponsorizzati-->
-                        <section class="container cardsnormal">
+                        <section v-if="houses.length !== 0" class="container cardsnormal">
 
                             <p class="text-light">Le nostre proposte</p>
 
@@ -170,7 +169,6 @@ export default {
                         <!-- fine sezione delle card annunci non sponsorizzati -->
 
                     </div>
-                    <!-- fine riga del fondatore e della suo frase -->
 
                 </div>
                 <!-- fine contenitore  -->
@@ -191,6 +189,17 @@ export default {
 <style lang="scss" scoped>
 @use "../scss/partials/variables" as *;
 
+.dark-long {
+
+    margin-top: -15%;
+
+}
+
+.grid-down {
+
+    margin-top: 25%;
+
+}
 
 .search-header {
 

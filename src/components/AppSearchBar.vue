@@ -99,14 +99,25 @@ export default {
                         const suggestions = data.results;
 
                         suggestions.forEach(suggestion => {
+
                             const listItem = document.createElement('li');
+
                             listItem.textContent = suggestion.address.freeformAddress;
+
                             listItem.classList.add('list-group-item');
+
                             listItem.addEventListener('click', () => {
+
                                 this.store.formData.text = suggestion.address.freeformAddress;
+
+                                console.log('autocomplete result', suggestion.address);
+
                                 suggestionsList.innerHTML = '';
+
                             });
+
                             suggestionsList.appendChild(listItem);
+
                         });
                     });
             } else {
@@ -240,6 +251,7 @@ export default {
 
         <!-- NO RESULTS MESSAGE -->
         <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
+        
     </div>
 </template>
 
