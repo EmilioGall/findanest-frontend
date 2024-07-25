@@ -65,6 +65,10 @@ export default {
 
                     this.noResults = true;
 
+                }else {
+
+                    this.noResults = false;
+
                 };//Se i risultati sono 0 la variabile diventa true
 
                 console.log(this.store.formData.text);
