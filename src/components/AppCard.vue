@@ -9,7 +9,7 @@ export default {
     
     data() {
         return {
-            imageBaseUrl: 'http://127.0.0.1:8000/storage'
+            imageBaseUrl: 'http://127.0.0.1:8000/images/house_images/'
         }
     },
 
@@ -72,6 +72,7 @@ export default {
 
     img {
         max-height: 200px;
+        object-position: center;
     }
 }
 
