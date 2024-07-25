@@ -149,7 +149,7 @@ export default {
                                 <i class="fa-solid fa-paper-plane fa-beat-fade"></i><span class="ms-2">Invia</span>
                             </button>
                             <!-- Loading btn -->
-                            <button v-if="loading" class="btn btn-custom" type="button" disabled>
+                            <button v-if="loading" class="btn btn-custom border-0" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                                 <span class="ms-2" role="status">Invio del messaggio in corso...</span>
                             </button>
