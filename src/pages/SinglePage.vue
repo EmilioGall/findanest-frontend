@@ -104,7 +104,7 @@ export default {
 	<!-- Loading Section -->
 	<div v-else class="text-center py-4">
 
-		<p class="fs-2 fw-bold">Loading...</p>
+		<i id="loader" class="fa-solid fa-spinner fa-spin"></i>
 		
 	</div>
 	<!-- Loading Section -->
@@ -116,5 +116,9 @@ export default {
 .map {
 	width: 100%;
 	height: 500px;
+}
+
+#loader{
+	font-size: 100px;
 }
 </style>
