@@ -39,11 +39,27 @@ export default {
 
                     params: allFilters,
 
-                });
+                })
+                    .then(response => {
 
-                this.store.results = response.data;
+                        const data = response.data;
 
-                console.log('response', this.store.results);
+                        console.log('data response', data);
+
+                        const filteredData = data.filter(house => {
+
+                            // If no services are selected, return all houses
+                            if (this.store.formData.services.length === 0) return true;
+
+                            // Filter houses that have all services
+                            return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
+                        });
+
+                        this.store.results = filteredData;
+
+                    });
+
+                console.log('filtered response', this.store.results);
 
                 if (this.store.results.length === 0) {
 
@@ -167,7 +183,8 @@ export default {
                     <!-- Input Slider Distance -->
                     <div class="col-6 d-flex flex-column justify-content-end">
 
-                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km` }}</label>
+                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km`
+                            }}</label>
                         <input type="range" class="form-range" min="0" max="100" step="1" id="distance"
                             v-model="formData.distance">
 
