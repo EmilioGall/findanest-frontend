@@ -46,10 +46,13 @@ export default {
                 <p class="cardtext text-muted">{{ house.address }}</p>
 
                 <!-- caratteristice della card -->
-                <div class="d-flex justify-content-center mt-3">
-                    <p class="mx-4 text-muted card-text"><i class="fa fa-bed"></i> {{ house.beds }} letti</p>
-                    <p class="mx-4 text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> {{ house.sqm }} mq
-                    </p>
+                <div class="row justify-content-center mt-3 text-center">
+
+                    <p class="col text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> <br> {{ house.sqm }} mq</p>
+                    <p class="col text-muted card-text"><i class="fa-solid fa-door-open"></i> <br> {{ house.rooms }} stanze</p>
+                    <p class="col text-muted card-text"><i class="fa fa-bed"></i> <br> {{ house.beds }} letti</p>
+                    <p class="col text-muted card-text"><i class="fa-solid fa-sink"></i> <br> {{ house.bathrooms }} bagni</p>
+
                 </div>
 
                 <!-- bottone della card -->
