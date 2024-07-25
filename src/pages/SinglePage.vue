@@ -11,7 +11,7 @@ export default {
 	data() {
 		return {
 			house: null,
-			imageBaseUrl: 'http://127.0.0.1:8000/storage',
+			imageBaseUrl: 'http://127.0.0.1:8000/storage/house_images/',
 		};
 	},
 
