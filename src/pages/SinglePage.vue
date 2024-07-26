@@ -74,7 +74,7 @@ export default {
 				<div class="mb-5 mb-lg-3">
 					<h4>{{ house.title }}</h4>
 					<p>{{ house.description }}</p>
-					<p><strong>Prezzo:</strong> €{{ Math.floor(house.price) }}</p>
+					<p><strong>Prezzo:</strong> €{{ Math.floor(house.price) }}/notte</p>
 					<p><strong>Indirizzo:</strong> {{ house.address }}</p>
 					<p><strong>Stanze:</strong> {{ house.rooms }}</p>
 					<p><strong>Letti:</strong> {{ house.beds }}</p>
