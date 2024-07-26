@@ -110,7 +110,15 @@ export default {
 
                                 this.store.formData.text = suggestion.address.freeformAddress;
 
-                                console.log('autocomplete result', suggestion.address);
+                                console.log('autocomplete result', suggestion);
+
+                                this.store.selectedPosition.lat = suggestion.position.lat;
+
+                                this.store.selectedPosition.lon = suggestion.position.lon;
+
+                                console.log('selected position, lat', this.store.selectedPosition.lat);
+
+                                console.log('selected position, lon', this.store.selectedPosition.lon);
 
                                 suggestionsList.innerHTML = '';
 
@@ -130,10 +138,10 @@ export default {
 
 <template>
     <!-- Inputs Filters -->
-    <div class="col-12 gap-2">
+    <div class="col-12 gap-2 position-relative">
 
         <!-- SEARCHBAR -->
-        <form @submit.prevent="handleSearch" class="row g-4">
+        <form @submit.prevent="handleSearch" class="row g-4 mb-2">
 
             <!-- Inputs Filters -->
             <div v-if="page == 'searchPage'" class="col-12 row gap-2 d-flex text-white">
@@ -247,11 +255,11 @@ export default {
         <!-- /SEARCHBAR -->
 
         <!-- LISTA SUGGERIMENTI -->
-        <div id="suggestions-list" class="list-group mt-2"></div>
+        <div id="suggestions-list" class="list-group mt-2 position-absolute"></div>
 
         <!-- NO RESULTS MESSAGE -->
         <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
-        
+
     </div>
 </template>
 
