@@ -11,7 +11,7 @@ export default {
             <div class="col-md-6 col-12 mb-4 mb-md-0">
                 <img src="/src/real estate/Team 7.jpg" class="img-fluid" alt="Team Image">
             </div>
-            <div class="col-md-6 col-12">
+            <div class="col-md-6 col-lg-6">
                 <p>
                     <strong>FindNest</strong> è la piattaforma innovativa che ti permette di trovare e prenotare la tua
                     casa ideale in qualsiasi parte del mondo. Che tu stia cercando una breve fuga, un soggiorno
