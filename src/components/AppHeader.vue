@@ -13,7 +13,8 @@ export default {
 
 <template>
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
     <div class="container">
 
       <!-- logo -->
@@ -44,7 +45,7 @@ export default {
           <!-- fine link inseriti dinamicamente -->
 
           <!-- link per il backend -->
-          <li class="d-flex backend-links ms-2">
+          <li class="d-flex backend-links ">
             <a href="http://127.0.0.1:8000" class="nav-link text-light publish-link">Pubblica il tuo annuncio</a>
           </li>
           <li>
@@ -71,9 +72,9 @@ nav {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.backend-links {
-  border-left: 2px solid $color-light-green;
-}
+// .backend-links {
+//   border-left: 2px solid $color-light-green;
+// }
 
 .publish-home {
   border: 1px solid $color-light-green;
@@ -131,5 +132,17 @@ nav {
   font-size: 18px;
   line-height: 0.3;
   background: #fff;
+}
+
+@media (max-width: 768px) {
+  .publish-home {
+    border: none;
+    margin: 0;
+  }
+
+  .backend-links {
+    border-left: none;
+    margin: 0;
+  }
 }
 </style>
