@@ -24,6 +24,35 @@ export default {
     },
 
     methods: {
+
+        degreesToRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        },
+
+        // Haversine formula to calculate the distance between two points on Earth
+        calculateDistance(point1, point2) {
+
+            const R = 6371; // Radius of the Earth in kilometers
+            const lat1 = point1.lat;
+            const lon1 = point1.lon;
+            const lat2 = point2.lat;
+            const lon2 = point2.lon;
+
+            const dLat = this.degreesToRadians(lat2 - lat1);
+            const dLon = this.degreesToRadians(lon2 - lon1);
+
+            const a =
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(this.degreesToRadians(lat1)) * Math.cos(this.degreesToRadians(lat2)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            const distance = R * c; // Distance in kilometers
+
+            return distance;
+        },
+
         async handleSearch() {
 
             this.store.formData.services = this.store.selectedServices;
@@ -46,13 +75,39 @@ export default {
 
                         console.log('data response', data);
 
-                        const filteredData = data.filter(house => {
+                        const filteredDataRaw = data.filter(house => {
 
                             // If no services are selected, return all houses
                             if (this.store.formData.services.length === 0) return true;
 
                             // Filter houses that have all services
                             return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
+                        });
+
+                        const filteredData = filteredDataRaw.filter(house => {
+
+                            // If distance selected is 0, return all houses in filteredDataRaw
+                            if (this.store.formData.distance === 0) return true;
+
+                            // console.log('house', house);
+
+                            // Define a constant Object with coordinates of houses
+                            const housePosition = {
+
+                                lat: house.latitude,
+                                lon: house.longitude,
+
+                            };
+
+                            console.log('house position', housePosition);
+
+                            console.log('selected position', this.store.selectedPosition);
+
+                            // Calculate distance between selected position and houses positions
+                            const distanceToHouse = this.calculateDistance(this.store.selectedPosition, housePosition);
+
+                            // Filter houses that have all services
+                            return distanceToHouse <= this.store.formData.distance;
                         });
 
                         this.store.results = filteredData;
@@ -65,7 +120,7 @@ export default {
 
                     this.noResults = true;
 
-                }else {
+                } else {
 
                     this.noResults = false;
 
