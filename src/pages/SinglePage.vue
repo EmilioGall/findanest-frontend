@@ -21,7 +21,7 @@ export default {
 		axios.get(`http://127.0.0.1:8000/api/houses/${slug}`)
 			.then((resp) => {
 				this.house = resp.data.result;
-
+				console.log(this.house);
 				this.$nextTick(() => {
 					this.initMap();
 				});
@@ -58,7 +58,6 @@ export default {
 		<div class="row justify-content-center text-center mb-2 mb-lg-4">
 			<div class="col-12 col-lg-8 col-xxl-7 text-center mx-auto">
 				<h2 class="display-5 fw-bold">{{ house.title }}</h2>
-				<p class="lead">{{ house.description }}</p>
 			</div>
 		</div>
 
@@ -80,11 +79,15 @@ export default {
 					<p><strong>Letti:</strong> {{ house.beds }}</p>
 					<p><strong>Bagni:</strong> {{ house.bathrooms }}</p>
 					<p><strong>Area:</strong> {{ house.sqm }} m2</p>
+					<div v-for="service in house.services" class="me-2 d-inline-block">
+						<i class="me-2" :class="service.icon"></i>
+						<span class="me-2">{{ service.service_name }}</span>
+					</div>
 				</div>
 			</div>
 
 
-			
+
 		</div>
 
 		<!-- Location Map -->
@@ -105,20 +108,26 @@ export default {
 	<div v-else class="text-center py-4">
 
 		<i id="loader" class="fa-solid fa-spinner fa-spin"></i>
-		
+
 	</div>
 	<!-- Loading Section -->
 
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use "../scss/partials/variables" as *;
+
+i {
+	color: $color-light-green;
+}
+
 .map {
 	width: 100%;
 	height: 500px;
 }
 
-#loader{
+#loader {
 	font-size: 100px;
 }
 </style>

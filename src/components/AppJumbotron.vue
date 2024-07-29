@@ -21,7 +21,7 @@ export default {
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
                     <br>
                     <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
+                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
                     </p>
                 </div>
             </div>
@@ -31,7 +31,7 @@ export default {
                     <p>2 / 3</p>
                     <h5>Pubblica il tuo annuncio<br /><span class="easyCap">Piu Facilmente</span></h5>
                     <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
+                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
                     </p>
                 </div>
             </div>
@@ -41,7 +41,7 @@ export default {
                     <p>3 / 3</p>
                     <h5>Scopri la proprietà<br /><span class="easyCap">Piu Facilmente</span></h5>
                     <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Piu</a>
+                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
                     </p>
                 </div>
             </div>
