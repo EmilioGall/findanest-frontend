@@ -129,9 +129,9 @@ export default {
                     <!-- inizio colonna Fondatore -->
                     <div class="col-lg-4 mt-5">
     
-                        <h2 style="color: #b5b5b5;">Elon Musk</h2>
+                        <h2 style="color: #b5b5b5;">Team #7</h2>
     
-                        <p style="color: #b5b5b5;">Fondatore Find Nest</p>
+                        <p style="color: #b5b5b5;">Powered by Boolean</p>
     
                     </div>
                     <!-- fine colonna Fondatore -->
