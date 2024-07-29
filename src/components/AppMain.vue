@@ -25,13 +25,19 @@ export default {
             console.log('Response all houses:', this.houses);
 
             // Filtra appartamenti visibili
-            this.visibleHouses = this.houses.filter(house => house.visible === 2);
+            this.visibleHouses = this.houses.filter(house => house.visible === 1);
+
+            console.log(this.visibleHouses);
 
             // Filtra tra gli visibili appartamenti sponsorizzati
             this.sponsoredHouses = this.visibleHouses.filter(house => house.sponsorships.length > 0);
             
+            console.log(this.sponsoredHouses);
+
             // Filtra tra gli visibili appartamenti non sponsorizzati
             this.houses = this.visibleHouses.filter(house => house.sponsorships.length <= 0);  //quando avremo la tabella ponte modifica
+
+            console.log(this.houses);
 
             // console.log('Sponsored houses:', this.sponsoredHouses);
 
