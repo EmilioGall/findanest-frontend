@@ -10,34 +10,32 @@ export default {
 };
 </script>
 
-
 <template>
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container">
+    <div class="container-fluid">
 
       <!-- logo -->
       <router-link class="navbar-brand" :to="{ name: 'Home' }">
-        <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="w-50">
+        <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="logo-img">
       </router-link>
       <!-- fine logo -->
 
       <!-- button per il responsive -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- fine button per il responive -->
 
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <!-- link della navbar -->
-        <ul class="navbar-nav ms-auto mg-lg-0">
+        <ul class="navbar-nav ms-auto">
           <!-- link inseriti dinamicamente -->
-          <li v-for="route in menuRoutes" :key="route.name" class="nav-item ">
-            <router-link :to="{ name: route.name }" class="nav-link text-light "
-              exact-active-class="active-link text-dark ">
+          <li v-for="route in menuRoutes" :key="route.name" class="nav-item">
+            <router-link :to="{ name: route.name }" class="nav-link text-light"
+              exact-active-class="active-link text-dark">
               {{ route.name }}
             </router-link>
           </li>
@@ -51,10 +49,9 @@ export default {
             <a href="http://127.0.0.1:8000/login" class="nav-link publish-home">Login</a>
           </li>
           <li>
-            <a href="http://127.0.0.1:8000/register" class="nav-link  publish-home">Registrati</a>
+            <a href="http://127.0.0.1:8000/register" class="nav-link publish-home">Registrati</a>
           </li>
           <!-- fine link per il backend -->
-
         </ul>
         <!-- fine link navbar -->
       </div>
@@ -62,13 +59,44 @@ export default {
   </nav>
 </template>
 
-
-
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
 
 nav {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-brand {
+  flex: 1;
+}
+
+.logo-img {
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar-toggler-custom {
+  background-color: $color-light-green;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-custom:hover {
+  background-color: darken($color-light-green, 10%);
+}
+
+.navbar-collapse {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.navbar-nav {
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-item {
+  margin: 0 10px;
 }
 
 .backend-links {
@@ -126,10 +154,23 @@ nav {
   font-weight: 400;
 }
 
-.navbar-toggler {
-  padding: 1px 5px;
-  font-size: 18px;
-  line-height: 0.3;
-  background: #fff;
+@media (max-width: 992px) {
+  .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  .backend-links {
+    border-left: none;
+    border-top: 2px solid $color-light-green;
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;
+  }
 }
 </style>
