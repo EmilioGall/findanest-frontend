@@ -18,13 +18,14 @@ export default {
 
       <!-- logo -->
       <router-link class="navbar-brand" :to="{ name: 'Home' }">
-        <img src="/src/assets/img/findanest-logo-h1.svg" alt="logo" class="logo-img">
+        <img src="/src/assets/img/logo/findnest_logo_green_h1.png" alt="logo" class="logo-img" height="50">
       </router-link>
       <!-- fine logo -->
 
       <!-- button per il responsive -->
-      <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- fine button per il responive -->
@@ -67,9 +68,9 @@ nav {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.backend-links {
-  border-left: 2px solid $color-light-green;
-}
+// .backend-links {
+//   border-left: 2px solid $color-light-green;
+// }
 
 .publish-home {
   border: 1px solid $color-light-green;

@@ -17,7 +17,7 @@ export default {
             <div class="carousel-item active">
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image1" />
                 <div class="carousel-caption carousel1">
-                    <p>1 / 3</p>
+                    <p class="d-none d-md-block">1 / 3</p>
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
                     <br>
                     <p>
@@ -46,11 +46,13 @@ export default {
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -60,7 +62,7 @@ export default {
 <style scoped lang="scss">
 @use "../scss/partials/variables" as *;
 
-.easyCap{
+.easyCap {
     color: $color-light-green;
 }
 
