@@ -11,18 +11,38 @@ export default {
 
     data() {
         return {
-            homes: [],
-            sponsoredHomes: []
+            houses: [],
+            sponsoredHouses: [],
+            visibleHouses: [],
         };
     },
 
     created() {
         axios.get("http://127.0.0.1:8000/api/houses").then((resp) => {
-            this.homes = resp.data.result;
-            this.sponsoredHomes = this.homes.filter(house => house.sponsored === 1);
-            this.homes = this.homes.filter(house => house.sponsored !== 1);  //quando avremo la tabella ponte modifica
-            // console.log('Sponsored Homes:', this.sponsoredHomes);
-            // console.log('Homes:', this.homes);
+            
+            this.houses = resp.data.result;
+
+            console.log('Response all houses:', this.houses);
+
+            // Filtra appartamenti visibili
+            this.visibleHouses = this.houses.filter(house => house.visible === 1);
+
+            console.log(this.visibleHouses);
+
+            // Filtra tra gli visibili appartamenti sponsorizzati
+            this.sponsoredHouses = this.visibleHouses.filter(house => house.sponsorships.length > 0);
+            
+            console.log(this.sponsoredHouses);
+
+            // Filtra tra gli visibili appartamenti non sponsorizzati
+            this.houses = this.visibleHouses.filter(house => house.sponsorships.length <= 0);  //quando avremo la tabella ponte modifica
+
+            console.log(this.houses);
+
+            // console.log('Sponsored houses:', this.sponsoredHouses);
+
+            // console.log('houses:', this.houses);
+
         }).catch(error => {
             console.error('Errore nella richiesta:', error);
         });
@@ -58,7 +78,7 @@ export default {
             <!-- formattazione delle card -->
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
     
-                <div v-for="sponsoredHouse in sponsoredHomes" :key="sponsoredHouse.id" class="col">
+                <div v-for="sponsoredHouse in sponsoredHouses" :key="sponsoredHouse.id" class="col">
                     
                     <!-- sezione dedicata alle cards -->
                     <AppCard :house="sponsoredHouse" @houseSelected="navigateToSinglePage" class="cardCustom"/>
@@ -96,7 +116,7 @@ export default {
                         <!-- formattazione delle card -->
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
     
-                            <div v-for="house in homes" :key="house.id" class="col">
+                            <div v-for="house in houses" :key="house.id" class="col">
     
                                 <!-- sezione dedicata alle cards -->
                                 <AppCard :house="house" @houseSelected="navigateToSinglePage" class="cardCustom"/>
@@ -115,9 +135,9 @@ export default {
                     <!-- inizio colonna Fondatore -->
                     <div class="col-lg-4 mt-5">
     
-                        <h2 style="color: #b5b5b5;">Elon Musk</h2>
+                        <h2 style="color: #b5b5b5;">Team #7</h2>
     
-                        <p style="color: #b5b5b5;">Fondatore Find Nest</p>
+                        <p style="color: #b5b5b5;">Powered by Boolean</p>
     
                     </div>
                     <!-- fine colonna Fondatore -->

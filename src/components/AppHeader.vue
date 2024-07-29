@@ -12,8 +12,9 @@ export default {
 
 <template>
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+
+    <div class="container">
 
       <!-- logo -->
       <router-link class="navbar-brand" :to="{ name: 'Home' }">
@@ -42,7 +43,7 @@ export default {
           <!-- fine link inseriti dinamicamente -->
 
           <!-- link per il backend -->
-          <li class="d-flex backend-links ms-2">
+          <li class="d-flex backend-links ">
             <a href="http://127.0.0.1:8000" class="nav-link text-light publish-link">Pubblica il tuo annuncio</a>
           </li>
           <li>
@@ -64,39 +65,6 @@ export default {
 
 nav {
   background-color: rgba(0, 0, 0, 0.8);
-}
-
-.navbar-brand {
-  flex: 1;
-}
-
-.logo-img {
-  width: 100px;
-  max-width: 100%;
-  height: auto;
-}
-
-.navbar-toggler-custom {
-  background-color: $color-light-green;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-toggler-custom:hover {
-  background-color: darken($color-light-green, 10%);
-}
-
-.navbar-collapse {
-  flex-grow: 1;
-  justify-content: flex-start;
-}
-
-.navbar-nav {
-  flex-direction: row;
-  align-items: center;
-}
-
-.nav-item {
-  margin: 0 10px;
 }
 
 .backend-links {
@@ -154,23 +122,10 @@ nav {
   font-weight: 400;
 }
 
-@media (max-width: 992px) {
-  .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-item {
-    margin: 5px 0;
-    text-align: left;
-  }
-
-  .backend-links {
-    border-left: none;
-    border-top: 2px solid $color-light-green;
-    width: 100%;
-    text-align: left;
-    margin-top: 10px;
-  }
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 0.3;
+  background: #fff;
 }
 </style>

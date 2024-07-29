@@ -17,4 +17,8 @@ export const store = reactive({
         price: 0,
         services: [],
     },
+    selectedPosition: {
+        lat: 0,
+        lon: 0,
+    }
 })

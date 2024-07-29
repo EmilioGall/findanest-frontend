@@ -39,15 +39,35 @@ export default {
 
                     params: allFilters,
 
-                });
+                })
+                    .then(response => {
 
-                this.store.results = response.data;
+                        const data = response.data;
 
-                console.log('response', this.store.results);
+                        console.log('data response', data);
+
+                        const filteredData = data.filter(house => {
+
+                            // If no services are selected, return all houses
+                            if (this.store.formData.services.length === 0) return true;
+
+                            // Filter houses that have all services
+                            return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
+                        });
+
+                        this.store.results = filteredData;
+
+                    });
+
+                console.log('filtered response', this.store.results);
 
                 if (this.store.results.length === 0) {
 
                     this.noResults = true;
+
+                }else {
+
+                    this.noResults = false;
 
                 };//Se i risultati sono 0 la variabile diventa true
 
@@ -79,14 +99,33 @@ export default {
                         const suggestions = data.results;
 
                         suggestions.forEach(suggestion => {
+
                             const listItem = document.createElement('li');
+
                             listItem.textContent = suggestion.address.freeformAddress;
+
                             listItem.classList.add('list-group-item');
+
                             listItem.addEventListener('click', () => {
+
                                 this.store.formData.text = suggestion.address.freeformAddress;
+
+                                console.log('autocomplete result', suggestion);
+
+                                this.store.selectedPosition.lat = suggestion.position.lat;
+
+                                this.store.selectedPosition.lon = suggestion.position.lon;
+
+                                console.log('selected position, lat', this.store.selectedPosition.lat);
+
+                                console.log('selected position, lon', this.store.selectedPosition.lon);
+
                                 suggestionsList.innerHTML = '';
+
                             });
+
                             suggestionsList.appendChild(listItem);
+
                         });
                     });
             } else {
@@ -99,10 +138,10 @@ export default {
 
 <template>
     <!-- Inputs Filters -->
-    <div class="col-12 gap-2">
+    <div class="col-12 gap-2 position-relative">
 
         <!-- SEARCHBAR -->
-        <form @submit.prevent="handleSearch" class="row g-4">
+        <form @submit.prevent="handleSearch" class="row g-4 mb-2">
 
             <!-- Inputs Filters -->
             <div v-if="page == 'searchPage'" class="col-12 row gap-2 d-flex text-white">
@@ -167,7 +206,8 @@ export default {
                     <!-- Input Slider Distance -->
                     <div class="col-6 d-flex flex-column justify-content-end">
 
-                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km` }}</label>
+                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km`
+                            }}</label>
                         <input type="range" class="form-range" min="0" max="100" step="1" id="distance"
                             v-model="formData.distance">
 
@@ -215,10 +255,11 @@ export default {
         <!-- /SEARCHBAR -->
 
         <!-- LISTA SUGGERIMENTI -->
-        <div id="suggestions-list" class="list-group mt-2"></div>
+        <div id="suggestions-list" class="list-group mt-2 position-absolute"></div>
 
         <!-- NO RESULTS MESSAGE -->
         <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
+
     </div>
 </template>
 
