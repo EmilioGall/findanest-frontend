@@ -180,11 +180,13 @@ export default {
                     <div class="col d-flex flex-column align-items-center">
                         <label for="sqm" class="form-label">m²</label>
                         <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-square-minus" @click="decrement('sqm')"></i>
+                            <i class="fa-solid fa-square-minus"
+                                @click="store.formData.sqm > 0 ? (store.formData.sqm -= 10) : null"></i>
                             <input type="text" class="form-control input-border text-center" id="sqm"
                                 :value="store.formData.sqm" readonly>
-                            <i class="fa-solid fa-square-plus" @click="increment('sqm')"></i>
+                            <i class="fa-solid fa-square-plus" @click="store.formData.sqm += 10"></i>
                         </div>
+
                         <div v-if="errors.sqm" class="text-danger">{{ errors.sqm[0] }}</div>
                     </div>
                     <!-- /Input Sqm -->
