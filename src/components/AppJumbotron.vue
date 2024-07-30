@@ -20,29 +20,20 @@ export default {
                     <p class="d-none d-md-block">1 / 3</p>
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
                     <br>
-                    <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
-                    </p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100-height" src="/src/real estate/home7.jpg" alt="image2" />
                 <div class="carousel-caption carousel1">
                     <p>2 / 3</p>
-                    <h5>Pubblica il tuo annuncio<br /><span class="easyCap">Piu Facilmente</span></h5>
-                    <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
-                    </p>
+                    <h5>Pubblica il tuo annuncio<br /><span class="easyCap">Più Facilmente</span></h5>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image3" />
                 <div class="carousel-caption carousel1">
                     <p>3 / 3</p>
-                    <h5>Scopri la proprietà<br /><span class="easyCap">Piu Facilmente</span></h5>
-                    <p>
-                        <a href="#" class="btn btn-light btn-lg mt-3 rounded-0">Scopri di Più</a>
-                    </p>
+                    <h5>Scopri la proprietà<br /><span class="easyCap">Più Facilmente</span></h5>
                 </div>
             </div>
         </div>
