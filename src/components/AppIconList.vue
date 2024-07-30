@@ -63,12 +63,12 @@ export default {
 
 <template>
 
-    <div class="text-center text-light row g-2" :class="`row-cols-${this.store.servicesArray.length}`">
+    <div class="text-center text-light row g-2 py-4" :class="`row-cols-${this.store.servicesArray.length}`">
 
         <div v-for="service in this.store.servicesArray" :key="service" class="icon-item col"
             :class="[{ activeFilter: store.selectedServices.includes(service.id) }]" @click="toggleFilter(service.id)">
 
-            <i class="fs-3" :class="service.icon"></i>
+            <i class="fs-3 pb-3" :class="service.icon"></i>
 
             <span v-if="wordCount(service.service_name) == 1" :id="`icon-text-${service.id}`" class="icon-text">
                 {{ service.service_name }}
