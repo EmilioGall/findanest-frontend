@@ -3,13 +3,9 @@ import axios from 'axios';
 import { store } from '../store';
 
 export default {
-
     props: {
-
         page: String,
-
     },
-
     data() {
         return {
             store,
@@ -18,21 +14,12 @@ export default {
             noResults: false,
         }
     },
-
-    computed: {
-
-    },
-
     methods: {
-
         degreesToRadians(degrees) {
             return degrees * (Math.PI / 180);
         },
-
-        // Haversine formula to calculate the distance between two points on Earth
         calculateDistance(point1, point2) {
-
-            const R = 6371; // Radius of the Earth in kilometers
+            const R = 6371;
             const lat1 = point1.lat;
             const lon1 = point1.lon;
             const lat2 = point2.lat;
@@ -48,101 +35,54 @@ export default {
 
             const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-            const distance = R * c; // Distance in kilometers
+            const distance = R * c;
 
             return distance;
         },
-
         async handleSearch() {
-
             this.store.formData.services = this.store.selectedServices;
-
-            console.log('services', this.store.formData.services);
-
             const allFilters = this.store.formData;
-
-            console.log('params', allFilters);
 
             try {
                 const response = await axios.get(`${store.baseURL}/api/search`, {
-
                     params: allFilters,
+                });
+                const data = response.data;
+                const filteredDataRaw = data.filter(house => {
+                    if (this.store.formData.services.length === 0) return true;
+                    return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
+                });
 
-                })
-                    .then(response => {
+                const filteredData = filteredDataRaw.filter(house => {
+                    if (this.store.formData.distance === 0) return true;
 
-                        const data = response.data;
+                    const housePosition = {
+                        lat: house.latitude,
+                        lon: house.longitude,
+                    };
 
-                        console.log('data response', data);
+                    const distanceToHouse = this.calculateDistance(this.store.selectedPosition, housePosition);
+                    return distanceToHouse <= this.store.formData.distance;
+                });
 
-                        const filteredDataRaw = data.filter(house => {
-
-                            // If no services are selected, return all houses
-                            if (this.store.formData.services.length === 0) return true;
-
-                            // Filter houses that have all services
-                            return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
-                        });
-
-                        const filteredData = filteredDataRaw.filter(house => {
-
-                            // If distance selected is 0, return all houses in filteredDataRaw
-                            if (this.store.formData.distance === 0) return true;
-
-                            // console.log('house', house);
-
-                            // Define a constant Object with coordinates of houses
-                            const housePosition = {
-
-                                lat: house.latitude,
-                                lon: house.longitude,
-
-                            };
-
-                            console.log('house position', housePosition);
-
-                            console.log('selected position', this.store.selectedPosition);
-
-                            // Calculate distance between selected position and houses positions
-                            const distanceToHouse = this.calculateDistance(this.store.selectedPosition, housePosition);
-
-                            // Filter houses that have all services
-                            return distanceToHouse <= this.store.formData.distance;
-                        });
-
-                        this.store.results = filteredData;
-
-                    });
-
-                console.log('filtered response', this.store.results);
+                this.store.results = filteredData;
 
                 if (this.store.results.length === 0) {
-
                     this.noResults = true;
-
                 } else {
-
                     this.noResults = false;
-
-                };//Se i risultati sono 0 la variabile diventa true
-
-                console.log(this.store.formData.text);
+                }
 
                 if (this.page != 'searchPage') {
-
                     this.$router.push("/ricerca");
-
                 }
 
             } catch (error) {
                 console.error(error);
             }
         },
-
         searchAutocomplete() {
-
             const suggestionsList = document.getElementById('suggestions-list');
-
             const query = this.store.formData.text;
 
             if (query.length > 2) {
@@ -154,37 +94,30 @@ export default {
                         const suggestions = data.results;
 
                         suggestions.forEach(suggestion => {
-
                             const listItem = document.createElement('li');
-
                             listItem.textContent = suggestion.address.freeformAddress;
-
                             listItem.classList.add('list-group-item');
 
                             listItem.addEventListener('click', () => {
-
                                 this.store.formData.text = suggestion.address.freeformAddress;
-
-                                console.log('autocomplete result', suggestion);
-
                                 this.store.selectedPosition.lat = suggestion.position.lat;
-
                                 this.store.selectedPosition.lon = suggestion.position.lon;
-
-                                console.log('selected position, lat', this.store.selectedPosition.lat);
-
-                                console.log('selected position, lon', this.store.selectedPosition.lon);
-
                                 suggestionsList.innerHTML = '';
-
                             });
 
                             suggestionsList.appendChild(listItem);
-
                         });
                     });
             } else {
                 suggestionsList.innerHTML = '';
+            }
+        },
+        increment(field) {
+            this.store.formData[field]++;
+        },
+        decrement(field) {
+            if (this.store.formData[field] > 0) {
+                this.store.formData[field]--;
             }
         },
     }
@@ -199,56 +132,60 @@ export default {
         <form @submit.prevent="handleSearch" class="row g-4 mb-2">
 
             <!-- Inputs Filters -->
-            <div v-if="page == 'searchPage'" class="col-12 row gap-2 d-flex text-white">
+            <div v-if="page == 'searchPage'" class="col-12 gap-3 d-flex justify-content-between text-white py-2">
 
                 <!-- Input Numbers -->
-                <div class="col-5 row gx-2 gy-1">
+                <div class="col-5 row gx-2 gy-1 d-flex justify-content-between gap-5 input-numbers">
 
                     <!-- Input Rooms -->
-                    <div class="col-3 d-flex gap-2 align-items-end">
-
+                    <div class="col d-flex flex-column align-items-center" style="margin-left: -10px;">
                         <label for="rooms" class="form-label">Stanze</label>
-                        <input type="number" class="form-control input-border" id="rooms" aria-describedby="rooms"
-                            v-model="store.formData.rooms">
-
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-square-minus" @click="decrement('rooms')"></i>
+                            <input type="text" class="form-control input-border text-center" id="rooms"
+                                :value="store.formData.rooms" readonly>
+                            <i class="fa-solid fa-square-plus" @click="increment('rooms')"></i>
+                        </div>
                         <div v-if="errors.rooms" class="text-danger">{{ errors.rooms[0] }}</div>
-
                     </div>
                     <!-- /Input Rooms -->
 
                     <!-- Input Bathrooms -->
-                    <div class="col-3 d-flex gap-2 align-items-end">
-
+                    <div class="col d-flex flex-column align-items-center">
                         <label for="bathrooms" class="form-label">Bagni</label>
-                        <input type="number" class="form-control input-border" id="bathrooms"
-                            aria-describedby="bathrooms" v-model="formData.bathrooms">
-
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-square-minus" @click="decrement('bathrooms')"></i>
+                            <input type="text" class="form-control input-border text-center" id="bathrooms"
+                                :value="store.formData.bathrooms" readonly>
+                            <i class="fa-solid fa-square-plus" @click="increment('bathrooms')"></i>
+                        </div>
                         <div v-if="errors.bathrooms" class="text-danger">{{ errors.bathrooms[0] }}</div>
-
                     </div>
                     <!-- /Input Bathrooms -->
 
                     <!-- Input Beds -->
-                    <div class="col-3 d-flex gap-2 align-items-end">
-
+                    <div class="col d-flex flex-column align-items-center">
                         <label for="beds" class="form-label">Letti</label>
-                        <input type="number" class="form-control input-border" id="beds" aria-describedby="beds"
-                            v-model="formData.beds">
-
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-square-minus" @click="decrement('beds')"></i>
+                            <input type="text" class="form-control input-border text-center" id="beds"
+                                :value="store.formData.beds" readonly>
+                            <i class="fa-solid fa-square-plus" @click="increment('beds')"></i>
+                        </div>
                         <div v-if="errors.beds" class="text-danger">{{ errors.beds[0] }}</div>
-
                     </div>
                     <!-- /Input Beds -->
 
                     <!-- Input Sqm -->
-                    <div class="col-3 d-flex gap-2 align-items-end">
-
+                    <div class="col d-flex flex-column align-items-center">
                         <label for="sqm" class="form-label">m²</label>
-                        <input type="number" class="form-control input-border" id="sqm" aria-describedby="sqm"
-                            v-model="formData.sqm">
-
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-square-minus" @click="decrement('sqm')"></i>
+                            <input type="text" class="form-control input-border text-center" id="sqm"
+                                :value="store.formData.sqm" readonly>
+                            <i class="fa-solid fa-square-plus" @click="increment('sqm')"></i>
+                        </div>
                         <div v-if="errors.sqm" class="text-danger">{{ errors.sqm[0] }}</div>
-
                     </div>
                     <!-- /Input Sqm -->
 
@@ -256,30 +193,26 @@ export default {
                 <!-- /Input Numbers -->
 
                 <!-- Input Sliders -->
-                <div class="col-7 row g-2">
+                <div class="col-7 d-flex justify-content-between gap-3" style="margin-left: 4px;">
 
                     <!-- Input Slider Distance -->
-                    <div class="col-6 d-flex flex-column justify-content-end">
-
-                        <label for="distance" class="form-label">{{ `Distanza massima: ${formData.distance}Km`
-                            }}</label>
+                    <div class="col-5 d-flex flex-column justify-content-end ms-5">
+                        <label for="distance" class="form-label">Distanza massima:
+                            <span class="text-evident">{{ ` ${formData.distance}`
+                                }} km</span></label>
                         <input type="range" class="form-range" min="0" max="100" step="1" id="distance"
                             v-model="formData.distance">
-
                         <div v-if="errors.distance" class="text-danger">{{ errors.distance[0] }}</div>
-
                     </div>
-                    <!-- Input /Slider Distance -->
+                    <!-- /Input Slider Distance -->
 
                     <!-- Input Slider Distance -->
-                    <div class="col-6 d-flex flex-column justify-content-end">
-
-                        <label for="price" class="form-label">{{ `Prezzo massimo: ${formData.price} €/notte` }}</label>
+                    <div class="col-5 d-flex flex-column justify-content-end">
+                        <label for="price" class="form-label">Prezzo massimo: <span class="text-evident">{{
+                            `${formData.price} €/notte` }}</span></label>
                         <input type="range" class="form-range" min="0" max="1000" step="10" id="price"
                             v-model="formData.price">
-
                         <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>
-
                     </div>
                     <!-- /Input Slider Distance -->
 
@@ -293,15 +226,12 @@ export default {
 
             <!-- Input Search -->
             <div class="col-12">
-                <div class="row gap-2 align-items-center">
-
+                <div class="row gap-2 align-items-center pt-1">
                     <input class="col-7 form-control-sm search-input" type="text" v-model="store.formData.text"
                         placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
-
                     <!-- Submit Button -->
                     <button class="col-2 search-btn btn ms-2" type="submit">Cerca</button>
                     <!-- Submit Button -->
-
                 </div>
             </div>
             <!-- /Input Search -->
@@ -331,5 +261,38 @@ export default {
 .search-btn {
     background-color: $color-light-green;
     height: 48px;
+}
+
+.fa-square-plus,
+.fa-square-minus {
+    cursor: pointer;
+}
+
+.input-numbers {
+    input {
+        background-color: transparent !important;
+        border: 0 !important;
+        color: $color-light-grey;
+    }
+
+    i {
+        font-size: 1.7rem;
+        color: $color-light-green;
+    }
+}
+
+.text-evident {
+    color: $color-light-green;
+    font-weight: bold;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    background-color: $color-light-green;
+    /* Per browser basati su WebKit */
+}
+
+input[type="range"]::-moz-range-thumb {
+    background-color: $color-light-green;
+    /* Per Firefox */
 }
 </style>
