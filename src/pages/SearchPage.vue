@@ -32,11 +32,11 @@ export default {
     computed: {
 
         sponsoredHouses() {
-            return this.store.results.filter(house => house.sponsored === 1);
+            return this.store.results.filter(house => house.sponsorships.length > 0);
         },
 
         houses() {
-            return this.store.results.filter(house => house.sponsored !== 1);
+            return this.store.results.filter(house => house.sponsorships.length <= 0);
         },
 
     },
@@ -51,25 +51,54 @@ export default {
 
         async handleSearch() {
 
+            this.store.formData.services = this.store.selectedServices;
+
             const allFilters = this.store.formData;
 
             try {
-                const response = await axios.get(`${store.baseURL}/api/search`, {
 
+                const response = await axios.get(`${store.baseURL}/api/search`, {
                     params: allFilters,
+                });
+
+                const data = response.data;
+                
+                const filteredDataRaw = data.filter(house => {
+                    if (this.store.formData.services.length === 0) return true;
+                    return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
+                });
+
+                const filteredData = filteredDataRaw.filter(house => {
+                    if (this.store.formData.distance === 0) return true;
+
+                    const housePosition = {
+
+                        lat: house.latitude,
+                        lon: house.longitude,
+                    };
+
+                    const distanceToHouse = this.calculateDistance(this.store.selectedPosition, housePosition);
+
+                    return distanceToHouse <= this.store.formData.distance;
 
                 });
 
-                this.store.results = response.data;
+                this.store.results = filteredData;
 
-                // console.log(this.store.results);
+                console.log(this.store.results);
 
-                // console.log(this.store.searchTerm);
+                if (this.store.results.length === 0) {
+                    this.noResults = true;
+                } else {
+                    this.noResults = false;
+                }
+
+                if (this.page != 'searchPage') {
+                    this.$router.push("/ricerca");
+                }
 
             } catch (error) {
-
                 console.error(error);
-
             }
         },
 

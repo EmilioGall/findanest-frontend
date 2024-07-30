@@ -47,7 +47,11 @@ export default {
                 const response = await axios.get(`${store.baseURL}/api/search`, {
                     params: allFilters,
                 });
+
                 const data = response.data;
+
+                console.log(data);
+                
                 const filteredDataRaw = data.filter(house => {
                     if (this.store.formData.services.length === 0) return true;
                     return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
