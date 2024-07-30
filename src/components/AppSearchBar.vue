@@ -12,6 +12,7 @@ export default {
             formData: store.formData,
             errors: {},
             noResults: false,
+            visibleHouses: [],
         }
     },
     methods: {
@@ -51,8 +52,11 @@ export default {
                 const data = response.data;
 
                 console.log(data);
-                
-                const filteredDataRaw = data.filter(house => {
+
+                // Filtra appartamenti visibili
+                this.visibleHouses = data.filter(house => house.visible == 2);
+
+                const filteredDataRaw = this.visibleHouses.filter(house => {
                     if (this.store.formData.services.length === 0) return true;
                     return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
                 });
@@ -136,7 +140,8 @@ export default {
         <form @submit.prevent="handleSearch" class="row g-4 mb-2">
 
             <!-- Inputs Filters -->
-            <div v-if="page == 'searchPage'" class="col-12 gap-3 d-flex flex-column flex-md-row justify-content-between text-white py-2">
+            <div v-if="page == 'searchPage'"
+                class="col-12 gap-3 d-flex flex-column flex-md-row justify-content-between text-white py-2">
 
                 <!-- Input Numbers -->
                 <div class="col-12 col-md-5 row gx-2 gy-1 d-flex justify-content-between gap-5 input-numbers">

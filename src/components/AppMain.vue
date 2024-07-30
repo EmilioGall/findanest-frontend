@@ -25,7 +25,7 @@ export default {
             console.log('Response all houses:', this.houses);
 
             // Filtra appartamenti visibili
-            this.visibleHouses = this.houses.filter(house => house.visible === 1);
+            this.visibleHouses = this.houses.filter(house => house.visible == 2);
 
             // console.log(this.visibleHouses);
 

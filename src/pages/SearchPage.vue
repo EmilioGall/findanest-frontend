@@ -19,7 +19,7 @@ export default {
         return {
 
             store,
-
+            visibleHouses: [],
         }
     },
 
@@ -62,8 +62,11 @@ export default {
                 });
 
                 const data = response.data;
+
+                // Filtra appartamenti visibili
+                this.visibleHouses = data.filter(house => house.visible == 2);
                 
-                const filteredDataRaw = data.filter(house => {
+                const filteredDataRaw = this.visibleHouses.filter(house => {
                     if (this.store.formData.services.length === 0) return true;
                     return this.store.formData.services.every(serviceId => house.services.some(service => service.id === serviceId));
                 });
