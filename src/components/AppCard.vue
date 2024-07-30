@@ -6,7 +6,7 @@ export default {
             required: true
         }
     },
-    
+
     data() {
         return {
             imageBaseUrl: 'http://127.0.0.1:8000/images/house_images/'
@@ -36,31 +36,42 @@ export default {
         <div class="card h-100 border-0 rounded-0 card-3d">
 
             <img :src="house.image ? (house.image.substring(0, 8) == 'https://'
-                ? house.image : `${imageBaseUrl}/${house.image}`) : 'https://picsum.photos/200/300'" class="card-img-top rounded-0"
-                :alt="house.title">
+                ? house.image : `${imageBaseUrl}/${house.image}`) : 'https://picsum.photos/200/300'"
+                class="card-img-top rounded-0" :alt="house.title">
 
             <!-- corpo della card -->
             <div class="card-body">
                 <!-- testo della card -->
-                <h5 class="cardtext">{{ house.title }}</h5>
+                <div class="title">
+                    <h5 class="cardtext">{{ house.title }}</h5>
+                </div>
                 <p class="cardtext text-muted">{{ house.address }}</p>
+            </div>
+
+            <!-- corpo della card -->
+            <div class="card-body d-flex flex-column justify-content-end">
 
                 <!-- caratteristice della card -->
-                <div class="row justify-content-center mt-3 text-center">
+                <div class="row justify-content-center text-center">
 
-                    <p class="col text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> <br> {{ house.sqm }} mq</p>
-                    <p class="col text-muted card-text"><i class="fa-solid fa-door-open"></i> <br> {{ house.rooms }} stanze</p>
+                    <p class="col text-muted card-text"><i class="fa-solid fa-ruler-combined"></i> <br> {{ house.sqm }}
+                        mq</p>
+                    <p class="col text-muted card-text"><i class="fa-solid fa-door-open"></i> <br> {{ house.rooms }}
+                        stanze</p>
                     <p class="col text-muted card-text"><i class="fa fa-bed"></i> <br> {{ house.beds }} letti</p>
-                    <p class="col text-muted card-text"><i class="fa-solid fa-sink"></i> <br> {{ house.bathrooms }} bagni</p>
+                    <p class="col text-muted card-text"><i class="fa-solid fa-sink"></i> <br> {{ house.bathrooms }}
+                        bagni</p>
 
                 </div>
 
                 <!-- bottone della card -->
-                <div class="d-flex my-2">
+                <div class="d-flex mt-4">
                     <button @click="navigateToSinglePage" class="btn btn-lg px-4 rounded custom-color">Dettagli</button>
                     <h5 class="my-auto ms-auto">{{ Math.floor(house.price) }} €/notte</h5>
                 </div>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -77,6 +88,11 @@ export default {
         max-height: 200px;
         object-position: center;
     }
+
+    title{
+        height: 100px;
+    }
+
 }
 
 button {
@@ -97,6 +113,10 @@ button:hover {
 .card-3d:hover {
     transform: scale(1.05) translateZ(10px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+p{
+    margin-bottom: 0 !important;
 }
 
 </style>
