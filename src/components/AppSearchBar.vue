@@ -135,7 +135,7 @@ export default {
             <div v-if="page == 'searchPage'" class="col-12 gap-3 d-flex flex-column flex-md-row justify-content-between text-white py-2">
 
                 <!-- Input Numbers -->
-                <div class="col-12 col-md-5 row gx-2 gy-1 d-flex justify-content-between gap-5 input-numbers">
+                <div class="col-12 col-md-5 row gx-2 gy-1 d-flex justify-content-between gap-2 input-numbers">
 
                     <!-- Input Rooms -->
                     <div class="col-6 col-md d-flex flex-column align-items-center">
@@ -198,10 +198,9 @@ export default {
                 <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-between gap-3">
 
                     <!-- Input Slider Distance -->
-                    <div class="col-md-5 d-flex flex-column justify-content-end ms-0 ms-md-5">
+                    <div class="col-md-6 d-flex flex-column justify-content-end">
                         <label for="distance" class="form-label">Distanza massima:
-                            <span class="text-evident">{{ ` ${formData.distance}`
-                                }} km</span></label>
+                            <span class="text-evident">{{ ` ${formData.distance}` }} km</span></label>
                         <input type="range" class="form-range" min="0" max="100" step="1" id="distance"
                             v-model="formData.distance">
                         <div v-if="errors.distance" class="text-danger">{{ errors.distance[0] }}</div>
@@ -209,11 +208,9 @@ export default {
                     <!-- /Input Slider Distance -->
 
                     <!-- Input Slider Distance -->
-                    <div class="col-md-5 d-flex flex-column justify-content-end">
-                        <label for="price" class="form-label">Prezzo massimo: <span class="text-evident">{{
-                            `${formData.price} €/notte` }}</span></label>
-                        <input type="range" class="form-range" min="0" max="1000" step="10" id="price"
-                            v-model="formData.price">
+                    <div class="col-md-6 d-flex flex-column justify-content-end">
+                        <label for="price" class="form-label">Prezzo massimo: <span class="text-evident">{{ `${formData.price} €/notte` }}</span></label>
+                        <input type="range" class="form-range" min="0" max="1000" step="10" id="price" v-model="formData.price">
                         <div v-if="errors.price" class="text-danger">{{ errors.price[0] }}</div>
                     </div>
                     <!-- /Input Slider Distance -->
