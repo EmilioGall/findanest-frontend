@@ -132,13 +132,13 @@ export default {
         <form @submit.prevent="handleSearch" class="row g-4 mb-2">
 
             <!-- Inputs Filters -->
-            <div v-if="page == 'searchPage'" class="col-12 gap-3 d-flex justify-content-between text-white py-2">
+            <div v-if="page == 'searchPage'" class="col-12 gap-3 d-flex flex-column flex-md-row justify-content-between text-white py-2">
 
                 <!-- Input Numbers -->
-                <div class="col-5 row gx-2 gy-1 d-flex justify-content-between gap-5 input-numbers">
+                <div class="col-12 col-md-5 row gx-2 gy-1 d-flex justify-content-between gap-5 input-numbers">
 
                     <!-- Input Rooms -->
-                    <div class="col d-flex flex-column align-items-center" style="margin-left: -10px;">
+                    <div class="col-6 col-md d-flex flex-column align-items-center">
                         <label for="rooms" class="form-label">Stanze</label>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-square-minus" @click="decrement('rooms')"></i>
@@ -151,7 +151,7 @@ export default {
                     <!-- /Input Rooms -->
 
                     <!-- Input Bathrooms -->
-                    <div class="col d-flex flex-column align-items-center">
+                    <div class="col-6 col-md d-flex flex-column align-items-center">
                         <label for="bathrooms" class="form-label">Bagni</label>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-square-minus" @click="decrement('bathrooms')"></i>
@@ -164,7 +164,7 @@ export default {
                     <!-- /Input Bathrooms -->
 
                     <!-- Input Beds -->
-                    <div class="col d-flex flex-column align-items-center">
+                    <div class="col-6 col-md d-flex flex-column align-items-center">
                         <label for="beds" class="form-label">Letti</label>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-square-minus" @click="decrement('beds')"></i>
@@ -177,7 +177,7 @@ export default {
                     <!-- /Input Beds -->
 
                     <!-- Input Sqm -->
-                    <div class="col d-flex flex-column align-items-center">
+                    <div class="col-6 col-md d-flex flex-column align-items-center">
                         <label for="sqm" class="form-label">m²</label>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-square-minus"
@@ -195,10 +195,10 @@ export default {
                 <!-- /Input Numbers -->
 
                 <!-- Input Sliders -->
-                <div class="col-7 d-flex justify-content-between gap-3" style="margin-left: 4px;">
+                <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-between gap-3">
 
                     <!-- Input Slider Distance -->
-                    <div class="col-5 d-flex flex-column justify-content-end ms-5">
+                    <div class="col-md-5 d-flex flex-column justify-content-end ms-0 ms-md-5">
                         <label for="distance" class="form-label">Distanza massima:
                             <span class="text-evident">{{ ` ${formData.distance}`
                                 }} km</span></label>
@@ -209,7 +209,7 @@ export default {
                     <!-- /Input Slider Distance -->
 
                     <!-- Input Slider Distance -->
-                    <div class="col-5 d-flex flex-column justify-content-end">
+                    <div class="col-md-5 d-flex flex-column justify-content-end">
                         <label for="price" class="form-label">Prezzo massimo: <span class="text-evident">{{
                             `${formData.price} €/notte` }}</span></label>
                         <input type="range" class="form-range" min="0" max="1000" step="10" id="price"
@@ -229,10 +229,10 @@ export default {
             <!-- Input Search -->
             <div class="col-12">
                 <div class="row gap-2 align-items-center pt-1">
-                    <input class="col-7 form-control-sm search-input" type="text" v-model="store.formData.text"
+                    <input class="col-8 col-sm-7 form-control-sm search-input" type="text" v-model="store.formData.text"
                         placeholder="Cerca le case (eg. Titolo, Città)..." @input="searchAutocomplete" />
                     <!-- Submit Button -->
-                    <button class="col-2 search-btn btn ms-2" type="submit">Cerca</button>
+                    <button class="col-3 col-sm-2 search-btn btn ms-2" type="submit">Cerca</button>
                     <!-- Submit Button -->
                 </div>
             </div>
@@ -242,7 +242,7 @@ export default {
         <!-- /SEARCHBAR -->
 
         <!-- LISTA SUGGERIMENTI -->
-        <div id="suggestions-list" class="list-group mt-2 position-absolute"></div>
+        <div id="suggestions-list" class="list-group mt-2 position-absolute w-100"></div>
 
         <!-- NO RESULTS MESSAGE -->
         <div v-if="noResults" class="alert alert-danger mt-3">La ricerca non ha prodotto risultati.</div>
