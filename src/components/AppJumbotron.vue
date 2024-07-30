@@ -15,7 +15,7 @@ export default {
         </ol> -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image1" />
+                <img class="d-block w-100-height" src="/src/real estate/home6.jpg" alt="image1" />
                 <div class="carousel-caption carousel1">
                     <p class="d-none d-md-block">1 / 3</p>
                     <h5>La tua vacanza<br /><span class="easyCap">A tutto Relax</span></h5>
