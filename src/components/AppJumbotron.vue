@@ -25,14 +25,14 @@ export default {
             <div class="carousel-item">
                 <img class="d-block w-100-height" src="/src/real estate/home7.jpg" alt="image2" />
                 <div class="carousel-caption carousel1">
-                    <p>2 / 3</p>
+                    <p class="d-none d-md-block">2 / 3</p>
                     <h5>Pubblica il tuo annuncio<br /><span class="easyCap">Più Facilmente</span></h5>
                 </div>
             </div>
             <div class="carousel-item">
                 <img class="d-block w-100-height" src="/src/real estate/home8.jpg" alt="image3" />
                 <div class="carousel-caption carousel1">
-                    <p>3 / 3</p>
+                    <p class="d-none d-md-block">3 / 3</p>
                     <h5>Scopri la proprietà<br /><span class="easyCap">Più Facilmente</span></h5>
                 </div>
             </div>
