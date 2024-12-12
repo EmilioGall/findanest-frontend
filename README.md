@@ -2,82 +2,60 @@ Here is the README.MD file for the FindAnest Frontend project:
 
 # FindAnest Frontend
 
-A web application built with Vue.js to connect patients with anesthesiologists for elective surgery consultations.
+A web-based application that allows users to search for apartments based on various criteria such as location, price range, and amenities. The application is a single-page application (SPA) built using Vue.js that communicates with a backend API to retrieve data.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Demo](#demo)
+- [Services](#services)
 - [Installation](#installation)
-- [Usage](#usage)
 - [API](#api)
 - [Milestones](#milestones)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
-- User-friendly interface for patients to search and book appointments with anesthesiologists
-- Secure and private consultation platform for anesthesiologists to interact with patients
-- Real-time availability calendar for anesthesiologists to schedule consultations
-- Optional integration with existing patient management systems (PMS)
-- Organized and clean UI that you can customize as per your requirements
+Search Functionality
 
-## Demo
+- Users can search for apartments by location, price, and other filters.
+- Results are displayed in a list view, with options to filter by distance, price, and availability.
 
-Check out a live demo of the FindAnest Frontend [here](https://emiliogall.github.io/findanest-frontend).
+Booking System
+
+- Users can book apartments sending a message directly from the search results page.
+- Users will receive a confirmation email with the booking details.
+
+User Profiles
+
+- Users can create and manage their profiles, including adding and editing their contact information.
+
+Apartment Listings
+
+- The application displays a list of available apartments that match the user's search criteria.
+
+Apartment Details
+
+- Users can view detailed information about each apartment, including its description, images, and amenities.
+
+## Services
+
+- **TomTom**: For geolocation services to retrieve latitude and longitude coordinates from addresses.
+- **Braintree**: For payment gateway services to process payments.
 
 ## Installation
 
-To install the FindAnest Frontend, you can use npm or yarn by running the following commands:
+To install the FindAnest Frontend, you can use npm by running the following commands:
 
 ```bash
 npm install findanest-frontend
-```
-
-or
-
-```bash
-yarn add findanest-frontend
-```
-
-## Usage
-
-To use the FindAnest Frontend in your Vue application, follow these steps:
-
-1. **Import the component:**
-
-```javascript
-import FindAnest from 'findanest-frontend';
-```
-
-2. **Register the component:**
-
-```javascript
-export default {
-  components: {
-    FindAnest,
-  },
-}
-```
-
-3. **Use the component in your template:**
-
-```html
-<template>
-  <div>
-    <h1>FindAnest</h1>
-    <find-anest />
-  </div>
-</template>
 ```
 
 ## API
 
 The FindAnest Frontend utilizes the following APIs:
 
-- **Patient API**: For retrieving patient information and booking consultations.
-- **Anesthesiologist API**: For retrieving anesthesiologist availability and scheduling consultations.
+- **Apartment API**: For retrieving apartment information and booking details.
+- **User API**: For retrieving user information and booking history.
 
 ### Example
 
@@ -88,29 +66,23 @@ axios.get('https://example.com/patient/api/patients')
     // Use patient data to populate the consultation calendar
   });
 ```
-
 ## Milestones
 
-### Milestone 1
-Create a reusable component containing a search bar and a calendar for patients to book appointments.
+Milestone 1
 
-### Milestone 2
-Integrate the Patient API to fetch patient information and populate the consultation calendar.
+- Create a reusable component containing a search bar and a calendar for users to search for apartments.
+  
+Milestone 2
 
-### Milestone 3
-Implement functionality that triggers an API call whenever a patient searches for an anesthesiologist, returning a list of available options.
+- Integrate the Apartment API to fetch apartment information and populate the search results page.
+  
+Milestone 3
 
-### Milestone 4
-Update the consultation calendar in real-time whenever an anesthesiologist schedules or cancels a consultation.
+- Implement functionality that triggers an API call whenever a user searches for an apartment, returning a list of available options.
 
-### Bonus 1
-Integrate with existing PMS systems for seamless data transfer.
+Milestone 4
 
-### Bonus 2
-Implement advanced search filters for patients to narrow down their search results.
-
-### Bonus 3
-Add a notification system for patients to receive reminders about upcoming consultations.
+- Update the search results page in real-time whenever an apartment's availability changes or when a new apartment is added.
 
 ## Contributing
 
