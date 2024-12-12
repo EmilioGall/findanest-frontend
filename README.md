@@ -1,91 +1,129 @@
 # FindNest Frontend
 
-A web-based application that allows users to search for apartments based on various criteria such as location, price range, and amenities. The application is a single-page application (SPA) built using Vue.js that communicates with a backend API to retrieve data.
+The frontend for the FindNest platform, a single-page application (SPA) that enables users to search, view, and book apartments based on various criteria such as location, price range, and amenities. The application is built using Vue.js and communicates with the FindNest backend API to deliver a seamless user experience.
 
 ## Table of Contents
 
 - [Dependencies](#dependencies)
 - [Features](#features)
-- [Services](#services)
+- [Environment Variables](#environment-variables)
 - [Installation](#installation)
+- [Services](#services)
 - [Milestones](#milestones)
 - [Contributing](#contributing)
 
 ## Dependencies
 
-* Vue.js (version 2.6.11)
-* Bootstrap (version 4.6.0) for styling and layout
-* Axios (version 0.21.1) for making HTTP requests
-* Vue Router (version 3.5.3) for client-side routing
+The project is built with the following key technologies:
+
+- **Vue.js (v2.6.11)**: Core framework for building the SPA.
+- **Bootstrap (v4.6.0)**: Styling and layout framework.
+- **Axios (v0.21.1)**: For making HTTP requests.
+- **Vue Router (v3.5.3)**: For managing client-side routing.
 
 ## Features
 
-Search Functionality
+1. **Search Functionality**:
+   - Users can search for apartments using filters like location, price range, and amenities.
+   - Results are displayed in a list view with options to sort and refine.
 
-- Users can search for apartments by location, price, and other filters.
-- Results are displayed in a list view, with options to filter by distance, price, and availability.
+2. **Real-time Apartment Listings**:
+   - Displays available apartments based on search criteria.
+   - Updates dynamically to reflect changes in availability.
 
-Booking System
+3. **Booking System**:
+   - Users can book apartments directly from the search results or apartment details page.
+   - Sends booking confirmation emails to users.
 
-- Users can book apartments sending a message directly from the search results page.
-- Users will receive a confirmation email with the booking details.
+4. **User Profiles**:
+   - Users can create and manage their profiles, including adding and editing contact information.
 
-User Profiles
+5. **Apartment Details**:
+   - Detailed view of each apartment, including descriptions, images, and amenities.
 
-- Users can create and manage their profiles, including adding and editing their contact information.
+## Environment Variables
 
-Apartment Listings
+The application requires certain environment variables for configuration. Create a `.env` file in the root directory and define the following variables:
 
-- The application displays a list of available apartments that match the user's search criteria.
+- `VUE_APP_API_BASE_URL`: URL for the backend API.
+- `VUE_APP_TOMTOM_API_KEY`: API key for TomTom services.
+- `VUE_APP_BRAINTREE_TOKEN`: Token for the Braintree payment gateway.
 
-Apartment Details
-
-- Users can view detailed information about each apartment, including its description, images, and amenities.
-
-## Services
-
-- **TomTom**: For geolocation services to retrieve latitude and longitude coordinates from addresses.
-- **Braintree**: For payment gateway services to process payments.
+Refer to `.env.example` for a complete list of required variables.
 
 ## Installation
 
-To install the FindAnest Frontend, you can use npm by running the following commands:
+To set up the project locally:
 
-```bash
-npm install findanest-frontend
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/EmilioGall/findanest-frontend.git
+   cd findanest-frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure environment variables:
+   ```bash
+   cp .env.example .env
+   # Update .env with appropriate values.
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run serve
+   ```
+
+5. Open the application in your browser:
+   ```
+
+   http://localhost:8080
+   ```
+
+## Services
+
+The project integrates the following external services:
+
+- **TomTom API**: Provides geolocation and mapping capabilities.
+- **Braintree**: Manages payment processing for bookings.
 
 ## Milestones
 
-Milestone 1
+1. **Reusable Search Components**:
+   - Develop a component with a search bar and calendar for apartment search functionality.
 
-- Create a reusable component containing a search bar and a calendar for users to search for apartments.
-  
-Milestone 2
+2. **API Integration**:
+   - Fetch apartment data using the backend API and populate the search results page.
 
-- Integrate the Apartment API to fetch apartment information and populate the search results page.
-  
-Milestone 3
+3. **Dynamic Updates**:
+   - Implement real-time updates to reflect apartment availability changes.
 
-- Implement functionality that triggers an API call whenever a user searches for an apartment, returning a list of available options.
-
-Milestone 4
-
-- Update the search results page in real-time whenever an apartment's availability changes or when a new apartment is added.
+4. **Enhanced Booking Workflow**:
+   - Allow users to securely book apartments with payment integration.
 
 ## Contributing
 
-We welcome contributions! If you're interested in contributing to the project, please follow these steps:
+We welcome contributions! Follow these steps to contribute:
 
 1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/YourFeature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeature`).
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
 5. Open a pull request.
 
----
-
-For more information and updates, check out the project repository on [GitHub](https://github.com/EmilioGall/findanest-frontend). 
+For more details, visit the [GitHub repository](https://github.com/EmilioGall/findanest-frontend).
 
 ---
 
