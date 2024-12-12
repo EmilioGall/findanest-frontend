@@ -7,7 +7,6 @@ A web-based application that allows users to search for apartments based on vari
 - [Features](#features)
 - [Services](#services)
 - [Installation](#installation)
-- [API](#api)
 - [Milestones](#milestones)
 - [Contributing](#contributing)
 
@@ -48,22 +47,6 @@ To install the FindAnest Frontend, you can use npm by running the following comm
 npm install findanest-frontend
 ```
 
-## API
-
-The FindAnest Frontend utilizes the following APIs:
-
-- **Apartment API**: For retrieving apartment information and booking details.
-- **User API**: For retrieving user information and booking history.
-
-### Example
-
-```javascript
-axios.get('https://example.com/patient/api/patients')
-  .then(response => {
-    const patients = response.data;
-    // Use patient data to populate the consultation calendar
-  });
-```
 ## Milestones
 
 Milestone 1
