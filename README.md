@@ -1,4 +1,4 @@
-# FindAnest Frontend
+# FindNest Frontend
 
 A web-based application that allows users to search for apartments based on various criteria such as location, price range, and amenities. The application is a single-page application (SPA) built using Vue.js that communicates with a backend API to retrieve data.
 
