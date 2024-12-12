@@ -4,11 +4,19 @@ A web-based application that allows users to search for apartments based on vari
 
 ## Table of Contents
 
+- [Dependencies](#dependencies)
 - [Features](#features)
 - [Services](#services)
 - [Installation](#installation)
 - [Milestones](#milestones)
 - [Contributing](#contributing)
+
+## Dependencies
+
+* Vue.js (version 2.6.11)
+* Bootstrap (version 4.6.0) for styling and layout
+* Axios (version 0.21.1) for making HTTP requests
+* Vue Router (version 3.5.3) for client-side routing
 
 ## Features
 
