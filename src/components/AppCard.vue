@@ -1,4 +1,6 @@
 <script>
+import { store } from "../store.js";
+
 export default {
     props: {
         house: {
@@ -9,7 +11,10 @@ export default {
 
     data() {
         return {
+
+            store,
             imageBaseUrl: 'http://127.0.0.1:8000/images/house_images/'
+
         }
     },
 
@@ -35,8 +40,7 @@ export default {
 
         <div class="card h-100 border-0 rounded-0 card-3d">
 
-            <img :src="house.image ? (house.image.substring(0, 8) == 'https://'
-                ? house.image : `${imageBaseUrl}/${house.image}`) : 'https://picsum.photos/200/300'"
+            <img :src="house.image ? (house.image.substring(0, 13) == 'house_images/' ? `${store.baseURL}/storage/${house.image}` : `${imageBaseUrl}/${house.image}`) : 'https://picsum.photos/200/300'"
                 class="card-img-top rounded-0" :alt="house.title">
 
             <!-- corpo della card -->
@@ -89,7 +93,7 @@ export default {
         object-position: center;
     }
 
-    title{
+    title {
         height: 100px;
     }
 
@@ -115,8 +119,7 @@ button:hover {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-p{
+p {
     margin-bottom: 0 !important;
 }
-
 </style>
