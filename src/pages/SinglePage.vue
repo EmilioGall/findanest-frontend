@@ -2,6 +2,7 @@
 import axios from 'axios';
 import tt from '@tomtom-international/web-sdk-maps';
 import AppContactForm from '../components/AppContactForm.vue';
+import { store } from "../store.js";
 
 export default {
 	components: {
@@ -11,6 +12,7 @@ export default {
 	data() {
 		return {
 			house: null,
+			store,
 			imageBaseUrl: 'http://127.0.0.1:8000/images/house_images/',
 		};
 	},
@@ -64,7 +66,7 @@ export default {
 		<div class="row py-3 align-items-center">
 			<div class="col-md-6 mt-md-0 mt-4">
 				<div class="mb-5 mb-lg-3">
-					<img :src="house.image.substring(0, 8) == 'https://' ? house.image : `${imageBaseUrl}/${house.image}`"
+					<img :src="house.image.substring(0, 13) == 'house_images/' ? `${store.baseURL}/storage/${house.image}` : `${imageBaseUrl}/${house.image}`"
 						class="card-img-top rounded-0" :alt="house.title">
 				</div>
 			</div>
